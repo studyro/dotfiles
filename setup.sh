@@ -12,6 +12,7 @@ ln -s $DOT_FILES_DIR/zsh/.zshrc $DOT_CONFIG_DIR/.zshrc
 
 ln -s $DOT_FILES_DIR/git/.gitignore_global $DOT_CONFIG_DIR/.gitignore_global
 
-ln -s $DOT_FILES_DIR/.config $DOT_CONFIG_DIR/.config
+ln -s $DOT_FILES_DIR/.config/mpv $DOT_CONFIG_DIR/.config/mpv
+ln -s $DOT_FILES_DIR/.config/nvim $DOT_CONFIG_DIR/.config/nvim
 
 ln -s $DOT_FILES_DIR/.xvim/.xvimrc $DOT_CONFIG_DIR/.xvimrc
