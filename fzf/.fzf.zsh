@@ -14,6 +14,10 @@ fi
 # ---------------
 [[ $- == *i* ]] && source "/Users/zhangstudyro/.fzf/shell/completion.zsh" 2> /dev/null
 
+export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_DEFAULT_OPTS="--reverse --inline-info"
+export FZF_TMUX_HEIGHT=30%
+
 # Key bindings
 # ------------
 source "/Users/zhangstudyro/.fzf/shell/key-bindings.zsh"
