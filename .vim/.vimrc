@@ -37,6 +37,9 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-rails'
 
+" Plugins for elixir
+Plug 'elixir-lang/vim-elixir'
+
 " Plugin for Swift
 Plug 'https://github.com/keith/swift.vim.git'
 
