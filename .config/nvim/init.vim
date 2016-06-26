@@ -24,6 +24,7 @@ Plug 'benekastah/neomake'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
+Plug 'jiangmiao/auto-pairs'
 
 " Plugins for JavaScript
 Plug 'mxw/vim-jsx'
