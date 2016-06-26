@@ -139,6 +139,7 @@ let g:fzf_height='30%'
 " let g:syntastic_javascript_checkers = ['eslint']
 " neomake configurations
 let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_elixir_enabled_makers = []
 autocmd BufWritePost,BufEnter * Neomake
 " jsx configurations
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
