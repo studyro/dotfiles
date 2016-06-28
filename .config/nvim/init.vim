@@ -21,6 +21,8 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'jiangmiao/auto-pairs'
+
+" Plugins for autocomplete
 function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
@@ -44,6 +46,7 @@ Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-rails'
 
 " Plugins for elixir
+Plug 'mattreduce/vim-mix'
 Plug 'elixir-lang/vim-elixir'
 Plug 'slashmili/alchemist.vim'
 
