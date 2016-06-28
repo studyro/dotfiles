@@ -10,13 +10,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'rking/ag.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-"Plug 'kien/ctrlp.vim'
 "Plug 'ervandew/supertab'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --tern-completer', 'on': [] }
 Plug 'tpope/vim-fugitive'
 Plug 'bling/vim-airline'
-Plug 'honza/vim-snippets'
-Plug 'SirVer/ultisnips', { 'on': [] }
 Plug 'majutsushi/tagbar' " nmap <leader>t :TagbarToggle<CR>
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
@@ -25,9 +21,17 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'jiangmiao/auto-pairs'
+function! DoRemote(arg)
+  UpdateRemotePlugins
+endfunction
+Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'honza/vim-snippets'
 
 " Plugins for JavaScript
 Plug 'mxw/vim-jsx'
+Plug 'carlitux/deoplete-ternjs'
 Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'othree/javascript-libraries-syntax.vim'
@@ -41,19 +45,13 @@ Plug 'tpope/vim-rails'
 
 " Plugins for elixir
 Plug 'elixir-lang/vim-elixir'
+Plug 'slashmili/alchemist.vim'
 
 " Plugin for Swift
 Plug 'https://github.com/keith/swift.vim.git'
 
 " ll of your Plugins must be added before the following line
 call plug#end()
-
-" lazy-load ultrasnips and ycm
-augroup load_us_ycm
-  autocmd!
-  autocmd InsertEnter * call plug#load('ultisnips', 'YouCompleteMe')
-                     \| call youcompleteme#Enable() | autocmd! load_us_ycm
-augroup END
 
 " Colors
 " colorscheme Tomorrow-Night
@@ -122,22 +120,8 @@ nnoremap <leader>n :NERDTreeToggle<CR>
 " A remap to fzf toggling
 nnoremap <C-p>     :Files<CR>
 
-" Configuration for ctrlp.vim
-let g:ctrlp_match_window = 'bottom,order:ttb'
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git\|node_modules\|bin\|\.hg\|\.svn\|build\|log\|resources\|coverage\|doc\|tmp\|public/assets\|vendor\|Android',
-  \ 'file': '\.jpg$\|\.exe$\|\.so$\|tags$\|\.dll$'
-  \ }
-" CtrlP Funky
-" let g:ctrlp_extensions = ['funky']
-" let g:ctrlp_funky_multi_buffers = 1
 " fzf configuration
 let g:fzf_height='30%'
-" syntastic configurations
-" let g:syntastic_javascript_checkers = ['eslint']
 " neomake configurations
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_elixir_enabled_makers = []
@@ -147,24 +131,24 @@ let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 " javascript-libraries-syntax
 let g:used_javascript_libs = 'react'
 
-" let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-" let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-
-" Configuration for ultisnips.vim
-"let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsExpandTrigger="<c-f>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
-" let g:UltiSnipsEditSplit="vertical"
+" Configuration for neosnippet.vim
+imap <C-f>     <Plug>(neosnippet_expand_or_jump)
+smap <C-f>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-f>     <Plug>(neosnippet_expand_target)
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+let g:neosnippet#snippets_directory='~/.vim/plugged/vim-snippets/snippets'
 
 " let g:SuperTabDefaultCompletionType = "context"
 " let g:SuperTabContextDefaultCompletionType = "<c-n>"
 
 set infercase
-set completeopt=longest,menuone
+set completeopt=preview,menuone
 set omnifunc=syntaxcomplete#Complete
 set completefunc=syntaxcomplete#Complete
 set complete=.,w,b,u,U,t,i,d
+
+let g:deoplete#enable_at_startup = 1
 
 " let g:ycm_semantic_triggers =  {
 "             \   'c' : ['->', '.'],
@@ -191,6 +175,7 @@ augroup omni_complete
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
   autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+  autocmd FileType elixir setlocal omnifunc=elixircomplete#Complete
 augroup END
 
 " Autogroups for some type of files.
