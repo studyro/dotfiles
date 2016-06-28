@@ -78,7 +78,7 @@ set clipboard=unnamed
 set splitright
 set splitbelow
 set mouse=a
-set tags=./tags
+set tags=./tags,tags;$HOME
 set laststatus=2
 
 " Folding
