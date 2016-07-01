@@ -83,7 +83,7 @@ set tags=./tags,tags;$HOME
 set laststatus=2
 
 " Folding
-set foldmethod=indent
+set foldmethod=syntax
 set foldlevel=1
 set foldnestmax=10
 set nofoldenable " Open all folds by default
