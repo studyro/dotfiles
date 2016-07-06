@@ -114,6 +114,8 @@ set wildignore+=.DS_Store
 
 " A remap to Ag.vim
 nnoremap <leader>a :Ag<space>
+" A remap to search the word under cursor
+nnoremap <leader>k :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " A remap to CtrlP Tag searching
 nnoremap <leader>o :CtrlPTag<CR>
 " A remap to TagBar.vim toggling
@@ -125,6 +127,9 @@ nnoremap <C-p>     :Files<CR>
 
 " fzf configuration
 let g:fzf_height='30%'
+if executable('ag')
+  set grepprg=ag\ --nogroup\ --nocolor
+endif
 " neomake configurations
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_elixir_enabled_makers = []
