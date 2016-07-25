@@ -50,6 +50,9 @@ Plug 'mattreduce/vim-mix'
 Plug 'elixir-lang/vim-elixir'
 Plug 'slashmili/alchemist.vim'
 
+" Plugins for elm
+Plug 'lambdatoast/elm.vim'
+
 " Plugin for Swift
 Plug 'https://github.com/keith/swift.vim.git'
 
