@@ -63,6 +63,10 @@ call plug#end()
 
 " Colors
 " colorscheme Tomorrow-Night
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+if (has("termguicolors"))
+  set termguicolors
+endif
 set background=dark
 colorscheme hybrid
 let g:hybrid_custom_term_colors = 1
