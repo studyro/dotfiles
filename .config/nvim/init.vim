@@ -20,7 +20,9 @@ Plug 'benekastah/neomake'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-dispatch'
 Plug 'jiangmiao/auto-pairs'
+Plug 'janko-m/vim-test'
 
 " Plugins for autocomplete
 function! DoRemote(arg)
@@ -46,7 +48,6 @@ Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-rails'
 
 " Plugins for elixir
-Plug 'mattreduce/vim-mix'
 Plug 'elixir-lang/vim-elixir'
 Plug 'slashmili/alchemist.vim'
 
@@ -133,6 +134,9 @@ let g:fzf_height='30%'
 if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 endif
+
+" vim-test configuration
+let test#strategy = "dispatch"
 " neomake configurations
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_elixir_enabled_makers = []
