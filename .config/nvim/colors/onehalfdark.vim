@@ -37,6 +37,26 @@ let s:color_col   = { "gui": "#313640", "cterm": "237" }
 let s:selection   = { "gui": "#474e5d", "cterm": "239" }
 let s:vertsplit   = { "gui": "#313640", "cterm": "237" }
 
+if has("nvim")
+  let g:terminal_color_0 =  s:bg.gui
+  let g:terminal_color_1 =  s:red.gui
+  let g:terminal_color_2 =  s:green.gui
+  let g:terminal_color_3 =  s:yellow.gui
+  let g:terminal_color_4 =  s:blue.gui
+  let g:terminal_color_5 =  s:purple.gui
+  let g:terminal_color_6 =  s:cyan.gui
+  let g:terminal_color_7 =  s:fg.gui
+  let g:terminal_color_8 =  s:bg.gui
+  let g:terminal_color_9 =  s:bg.gui
+  let g:terminal_color_10 = s:red.gui
+  let g:terminal_color_11 = s:green.gui
+  let g:terminal_color_12 = s:yellow.gui
+  let g:terminal_color_13 = s:blue.gui
+  let g:terminal_color_14 = s:purple.gui
+  let g:terminal_color_15 = s:cyan.gui
+  let g:terminal_color_background = g:terminal_color_0
+  let g:terminal_color_foreground = g:terminal_color_7
+endif
 
 function! s:h(group, fg, bg, attr)
   if type(a:fg) == type({})
