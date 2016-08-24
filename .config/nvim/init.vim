@@ -10,7 +10,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'rking/ag.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-"Plug 'ervandew/supertab'
+Plug 'jgdavey/tslime.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'bling/vim-airline'
 Plug 'majutsushi/tagbar' " nmap <leader>t :TagbarToggle<CR>
@@ -57,6 +57,7 @@ Plug 'lambdatoast/elm.vim'
 
 " Plugin for Swift
 Plug 'https://github.com/keith/swift.vim.git'
+" Plug 'mitsuse/autocomplete-swift'
 
 " ll of your Plugins must be added before the following line
 call plug#end()
@@ -140,6 +141,13 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 endif
 
+" tslime configuration
+let g:tslime_always_current_session = 1
+let g:tslime_always_current_window = 1
+vmap <C-c><C-c> <Plug>SendSelectionToTmux
+nmap <C-c><C-c> <Plug>NormalModeSendToTmux
+nmap <C-c>r     <Plug>SetTmuxVars
+
 " vim-test configuration
 let test#strategy = "dispatch"
 " neomake configurations
@@ -169,6 +177,9 @@ set completefunc=syntaxcomplete#Complete
 set complete=.,w,b,u,U,t,i,d
 
 let g:deoplete#enable_at_startup = 1
+
+" Autocompletion for swift
+" call sourcekitten_daemon#enable(6600)
 
 " let g:ycm_semantic_triggers =  {
 "             \   'c' : ['->', '.'],
