@@ -37,7 +37,7 @@ Plug 'honza/vim-snippets'
 
 " Plugins for JavaScript
 Plug 'mxw/vim-jsx'
-Plug 'carlitux/deoplete-ternjs'
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'othree/javascript-libraries-syntax.vim'
@@ -159,6 +159,13 @@ autocmd BufWritePost,BufEnter * Neomake
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 " javascript-libraries-syntax
 let g:used_javascript_libs = 'react'
+" deoplete-tern configrations
+let g:tern_request_timeout = 2
+let g:tern#filetypes = [
+      \'jsx',
+      \'javascript.jsx',
+      \'vue'
+      \]
 
 " Configuration for neosnippet.vim
 imap <C-f>     <Plug>(neosnippet_expand_or_jump)
