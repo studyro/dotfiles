@@ -37,7 +37,7 @@ Plug 'honza/vim-snippets'
 
 " Plugins for JavaScript
 Plug 'mxw/vim-jsx'
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+" Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'othree/javascript-libraries-syntax.vim'
@@ -154,6 +154,8 @@ let test#strategy = "dispatch"
 " neomake configurations
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_elixir_enabled_makers = []
+let g:neomake_error_sign = {'text': '❌'}
+let g:neomake_warning_sign = {'text': '❗️'}
 autocmd BufWritePost,BufEnter * Neomake
 " jsx configurations
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
