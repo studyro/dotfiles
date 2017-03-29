@@ -64,13 +64,13 @@ Plug 'https://github.com/keith/swift.vim.git'
 call plug#end()
 
 " Colors
-" colorscheme Tomorrow-Night
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 if (has("termguicolors"))
   set termguicolors
 endif
 set background=dark
-colorscheme onehalfdark
+" colorscheme onehalfdark
+colorscheme spacegray
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 0 " Remove this line if using the default palette.
 
