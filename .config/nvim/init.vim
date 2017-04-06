@@ -127,6 +127,7 @@ set wildignore+=.DS_Store
 nnoremap <leader>a :Ag<space>
 " A remap to search the word under cursor
 nnoremap <leader>k :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+" nnoremap <leader>k :Ag "\b<C-R><C-W>\b"
 " A remap to CtrlP Tag searching
 nnoremap <leader>o :CtrlPTag<CR>
 " A remap to TagBar.vim toggling

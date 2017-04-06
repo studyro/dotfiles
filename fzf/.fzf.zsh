@@ -18,6 +18,8 @@ export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_DEFAULT_OPTS="--reverse --inline-info"
 export FZF_TMUX_HEIGHT=30%
 
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
 # Key bindings
 # ------------
 source "$HOME/.fzf/shell/key-bindings.zsh"
