@@ -37,10 +37,11 @@ Plug 'honza/vim-snippets'
 
 " Plugins for JavaScript
 Plug 'mxw/vim-jsx'
-" Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'elzr/vim-json'
+" Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 
 " Plugins for Ruby
 Plug 'vim-ruby/vim-ruby'
