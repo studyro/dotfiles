@@ -125,10 +125,10 @@ set wildignore+=*.swp,*~,._*
 set wildignore+=.DS_Store
 
 " A remap to Ag.vim
-nnoremap <leader>a :Ag<space>
+nnoremap <leader>a :Ag!<space>
 " A remap to search the word under cursor
 " nnoremap <leader>k :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-nnoremap <leader>k :Ag "\b<C-R><C-W>\b"
+nnoremap <leader>k :Ag! "\b<C-R><C-W>\b"
 " A remap to CtrlP Tag searching
 nnoremap <leader>o :CtrlPTag<CR>
 " A remap to TagBar.vim toggling
@@ -143,6 +143,7 @@ let g:fzf_height='30%'
 if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 endif
+let g:ag_highlight=1
 
 " tslime configuration
 let g:tslime_always_current_session = 1
