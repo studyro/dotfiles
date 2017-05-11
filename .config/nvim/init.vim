@@ -41,7 +41,8 @@ Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'elzr/vim-json'
-" Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+" Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
+" Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
 
 " Plugins for Ruby
 Plug 'vim-ruby/vim-ruby'
@@ -156,6 +157,7 @@ nmap <C-c>r     <Plug>SetTmuxVars
 let test#strategy = "dispatch"
 " neomake configurations
 let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_javascript_eslint_exe = system('PATH=$(npm bin):$PATH && which eslint | tr -d "\n"')
 let g:neomake_elixir_enabled_makers = []
 let g:neomake_error_sign = {'text': '❌'}
 let g:neomake_warning_sign = {'text': '❗️'}
@@ -165,12 +167,10 @@ let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 " javascript-libraries-syntax
 let g:used_javascript_libs = 'react'
 " deoplete-tern configrations
-let g:tern_request_timeout = 2
-let g:tern#filetypes = [
-      \'jsx',
-      \'javascript.jsx',
-      \'vue'
-      \]
+" let g:deoplete#omni#functions = {}
+" let g:deoplete#omni#functions.javascript = ['tern#Complete']
+" let g:deoplete#sources = {}
+" let g:deoplete#sources['javascript.jsx'] = ['file', 'neosnippet', 'ternjs']
 
 " Configuration for neosnippet.vim
 imap <C-f>     <Plug>(neosnippet_expand_or_jump)
