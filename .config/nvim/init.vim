@@ -62,6 +62,8 @@ Plug 'lambdatoast/elm.vim'
 Plug 'https://github.com/keith/swift.vim.git'
 " Plug 'mitsuse/autocomplete-swift'
 
+Plug 'kelan/gyp.vim'
+
 " ll of your Plugins must be added before the following line
 call plug#end()
 
