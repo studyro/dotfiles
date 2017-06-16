@@ -64,6 +64,9 @@ Plug 'https://github.com/keith/swift.vim.git'
 
 Plug 'kelan/gyp.vim'
 
+" Themes
+Plug 'trevordmiller/nova-vim'
+
 " ll of your Plugins must be added before the following line
 call plug#end()
 
@@ -73,8 +76,8 @@ if (has("termguicolors"))
   set termguicolors
 endif
 set background=dark
-" colorscheme onehalfdark
-colorscheme spacegray
+" colorscheme spacegray
+colorscheme nova
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 0 " Remove this line if using the default palette.
 
