@@ -58,8 +58,9 @@ Plug 'slashmili/alchemist.vim'
 " Plugins for elm
 Plug 'lambdatoast/elm.vim'
 
-" Plugin for Swift
+" Plugin for clang-based languages
 Plug 'https://github.com/keith/swift.vim.git'
+Plug 'arakashic/chromatica.nvim'
 " Plug 'mitsuse/autocomplete-swift'
 
 Plug 'kelan/gyp.vim'
@@ -187,6 +188,10 @@ let g:neosnippet#snippets_directory='~/.vim/plugged/vim-snippets/snippets'
 
 " let g:SuperTabDefaultCompletionType = "context"
 " let g:SuperTabContextDefaultCompletionType = "<c-n>"
+
+" Configuration for chromatica
+let g:chromatica#libclang_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
+let g:chromatica#enable_at_startup = 1
 
 set infercase
 set completeopt=preview,menuone
