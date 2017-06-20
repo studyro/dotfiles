@@ -41,8 +41,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'elzr/vim-json'
-" Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
-" Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm i -g tern' }
 
 " Plugins for Ruby
 Plug 'vim-ruby/vim-ruby'
@@ -177,6 +176,7 @@ let g:used_javascript_libs = 'react'
 " let g:deoplete#omni#functions.javascript = ['tern#Complete']
 " let g:deoplete#sources = {}
 " let g:deoplete#sources['javascript.jsx'] = ['file', 'neosnippet', 'ternjs']
+let g:tern_request_timeout = 1
 
 " Configuration for neosnippet.vim
 imap <C-f>     <Plug>(neosnippet_expand_or_jump)
