@@ -166,8 +166,8 @@ let test#strategy = "dispatch"
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_javascript_eslint_exe = system('PATH=$(npm bin):$PATH && which eslint | tr -d "\n"')
 let g:neomake_elixir_enabled_makers = []
-let g:neomake_error_sign = {'text': '❌'}
-let g:neomake_warning_sign = {'text': '❗️'}
+" let g:neomake_error_sign = {'text': '❌'}
+" let g:neomake_warning_sign = {'text': '❗️'}
 autocmd BufWritePost,BufEnter * Neomake
 " jsx configurations
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
