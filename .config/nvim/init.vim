@@ -42,6 +42,8 @@ Plug 'jelera/vim-javascript-syntax'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'elzr/vim-json'
 Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm i -g tern' }
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mhartington/nvim-typescript'
 
 " Plugins for Ruby
 Plug 'vim-ruby/vim-ruby'
@@ -186,9 +188,6 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 let g:neosnippet#snippets_directory='~/.vim/plugged/vim-snippets/snippets'
 
-" let g:SuperTabDefaultCompletionType = "context"
-" let g:SuperTabContextDefaultCompletionType = "<c-n>"
-
 " Configuration for chromatica
 let g:chromatica#libclang_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
 let g:chromatica#enable_at_startup = 1
@@ -253,9 +252,11 @@ augroup configgroup
             autocmd BufEnter *.sh setlocal tabstop=2
             autocmd BufEnter *.sh setlocal shiftwidth=2
             autocmd BufEnter *.sh setlocal softtabstop=2
-            autocmd BufNewFile,BufRead Fastfile set filetype=ruby
-            autocmd BufNewFile,BufRead *.html.eex set filetype=html.eelixir
-            autocmd BufNewFile,BufRead *.html.erb set filetype=html.eruby
+            autocmd BufNewFile,BufRead Fastfile setlocal filetype=ruby
+            autocmd BufNewFile,BufRead *.html.eex setlocal filetype=html.eelixir
+            autocmd BufNewFile,BufRead *.html.erb setlocal filetype=html.eruby
+            autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
+            autocmd BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
 augroup END
 
 " Tmux + Vim navigating.
