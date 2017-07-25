@@ -174,10 +174,6 @@ let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 " javascript-libraries-syntax
 let g:used_javascript_libs = 'react'
 " deoplete-tern configrations
-" let g:deoplete#omni#functions = {}
-" let g:deoplete#omni#functions.javascript = ['tern#Complete']
-" let g:deoplete#sources = {}
-" let g:deoplete#sources['javascript.jsx'] = ['file', 'neosnippet', 'ternjs']
 let g:tern_request_timeout = 1
 
 " Configuration for neosnippet.vim
@@ -193,7 +189,7 @@ let g:chromatica#libclang_path='/Applications/Xcode.app/Contents/Developer/Toolc
 let g:chromatica#enable_at_startup = 1
 
 set infercase
-set completeopt=preview,menuone
+set completeopt=menuone
 set omnifunc=syntaxcomplete#Complete
 set completefunc=syntaxcomplete#Complete
 set complete=.,w,b,u,U,t,i,d
