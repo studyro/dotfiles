@@ -42,6 +42,7 @@ Plug 'jelera/vim-javascript-syntax'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'elzr/vim-json'
 Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm i -g tern' }
+Plug 'ternjs/tern_for_vim'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript'
 
@@ -175,6 +176,7 @@ let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 let g:used_javascript_libs = 'react'
 " deoplete-tern configrations
 let g:tern_request_timeout = 1
+let g:tern#command = ["node", '/usr/local/homebrew/bin/tern', '--no-port-file']
 
 " Configuration for neosnippet.vim
 imap <C-f>     <Plug>(neosnippet_expand_or_jump)
@@ -198,22 +200,6 @@ let g:deoplete#enable_at_startup = 1
 
 " Autocompletion for swift
 " call sourcekitten_daemon#enable(6600)
-
-" let g:ycm_semantic_triggers =  {
-"             \   'c' : ['->', '.'],
-"             \   'objc' : ['->', '.'],
-"             \   'ocaml' : ['.', '#'],
-"             \   'cpp,objcpp' : ['->', '.', '::'],
-"             \   'perl' : ['->'],
-"             \   'php' : ['->', '::', '"', "'", 'use ', 'namespace ', '\'],
-"             \   'cs,java,javascript,typescript,d,python,perl6,scala,vb,elixir,go' : ['.'],
-"             \   'html,xml,erb,ejs,liquid' : ['<', 're!<.*\s', '</'],
-"             \   'vim' : ['#', '_', 'g:', 'v:', 's:', 'b:', 'w:'],
-"             \   'lua' : ['.', ':'],
-"             \   'erlang' : [':'],
-"             \   'haskell' : ['.', 're!.'],
-"             \   'css,scss': [ 're!^\s{2}', 're!:\s+' ]
-"             \ }
 
 augroup omni_complete
   " clear commands before resetting
