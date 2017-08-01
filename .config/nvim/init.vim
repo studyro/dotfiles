@@ -234,11 +234,12 @@ augroup configgroup
             autocmd BufEnter *.sh setlocal tabstop=2
             autocmd BufEnter *.sh setlocal shiftwidth=2
             autocmd BufEnter *.sh setlocal softtabstop=2
-            autocmd BufNewFile,BufRead Fastfile setlocal filetype=ruby
-            autocmd BufNewFile,BufRead *.html.eex setlocal filetype=html.eelixir
-            autocmd BufNewFile,BufRead *.html.erb setlocal filetype=html.eruby
             autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
             autocmd BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
+            autocmd BufNewFile,BufRead Fastfile set filetype=ruby
+            autocmd BufNewFile,BufRead Dangerfile set filetype=ruby
+            autocmd BufNewFile,BufRead *.html.eex set filetype=html.eelixir
+            autocmd BufNewFile,BufRead *.html.erb set filetype=html.eruby
 augroup END
 
 " Tmux + Vim navigating.
