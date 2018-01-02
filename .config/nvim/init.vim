@@ -201,18 +201,6 @@ let g:deoplete#enable_at_startup = 1
 " Autocompletion for swift
 " call sourcekitten_daemon#enable(6600)
 
-augroup omni_complete
-  " clear commands before resetting
-  autocmd!
-  " Enable omnicomplete for supported filetypes
-  autocmd FileType css,scss setlocal omnifunc=csscomplete#CompleteCSS
-  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-  autocmd FileType elixir setlocal omnifunc=elixircomplete#Complete
-augroup END
-
 " Autogroups for some type of files.
 augroup configgroup
             autocmd!
@@ -240,6 +228,19 @@ augroup configgroup
             autocmd BufNewFile,BufRead Dangerfile set filetype=ruby
             autocmd BufNewFile,BufRead *.html.eex set filetype=html.eelixir
             autocmd BufNewFile,BufRead *.html.erb set filetype=html.eruby
+            autocmd FileType typescript,typescript.tsx setlocal indentkeys+=0
+augroup END
+
+augroup omni_complete
+  " clear commands before resetting
+  autocmd!
+  " Enable omnicomplete for supported filetypes
+  autocmd FileType css,scss setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+  autocmd FileType elixir setlocal omnifunc=elixircomplete#Complete
 augroup END
 
 " Tmux + Vim navigating.

@@ -79,6 +79,13 @@ source $ZSH/oh-my-zsh.sh
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
+# Android
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export ANDROID_SDK=$HOME/Library/Android/sdk
+export ANDROID_NDK=$HOME/Library/Android/android-ndk-r14b
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
 # ZSH / BASH users
 # # Add this to your .env, .bashrc, .zshrc, or whatever file you're using for environment
 
