@@ -46,6 +46,8 @@ ZSH_THEME="pz_simple"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+source /usr/local/homebrew/opt/asdf/asdf.sh
+
 # rbenv initializer
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 # swiftenv initializer
@@ -82,7 +84,7 @@ source $ZSH/oh-my-zsh.sh
 # Android
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export ANDROID_SDK=$HOME/Library/Android/sdk
-export ANDROID_NDK=$HOME/Library/Android/android-ndk-r14b
+export ANDROID_NDK=$HOME/Library/Android/android-ndk-r10e
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 

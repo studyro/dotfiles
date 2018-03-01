@@ -12,6 +12,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'jgdavey/tslime.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
 Plug 'bling/vim-airline'
 Plug 'majutsushi/tagbar' " nmap <leader>t :TagbarToggle<CR>
 Plug 'scrooloose/nerdtree'
@@ -25,6 +26,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'radenling/vim-dispatch-neovim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'janko-m/vim-test'
+Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
 " Plugins for autocomplete
 function! DoRemote(arg)
@@ -226,6 +228,7 @@ augroup configgroup
             autocmd BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
             autocmd BufNewFile,BufRead Fastfile set filetype=ruby
             autocmd BufNewFile,BufRead Dangerfile set filetype=ruby
+            autocmd BufNewFile,BufRead Appfile set filetype=ruby
             autocmd BufNewFile,BufRead *.html.eex set filetype=html.eelixir
             autocmd BufNewFile,BufRead *.html.erb set filetype=html.eruby
             autocmd FileType typescript,typescript.tsx setlocal indentkeys+=0
