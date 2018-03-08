@@ -189,8 +189,8 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 let g:neosnippet#snippets_directory='~/.vim/plugged/vim-snippets/snippets'
 
 " Configuration for chromatica
-let g:chromatica#libclang_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
-let g:chromatica#enable_at_startup = 1
+" let g:chromatica#libclang_path='/usr/bin/clang'
+" let g:chromatica#enable_at_startup = 1
 
 set infercase
 set completeopt=menuone
