@@ -29,10 +29,8 @@ Plug 'janko-m/vim-test'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
 " Plugins for autocomplete
-function! DoRemote(arg)
-  UpdateRemotePlugins
-endfunction
-Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/denite.nvim'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'honza/vim-snippets'
@@ -45,8 +43,8 @@ Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'elzr/vim-json'
 Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm i -g tern' }
 Plug 'ternjs/tern_for_vim'
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mhartington/nvim-typescript'
+Plug 'HerringtonDarkholme/yats.vim', { 'commit': '4bf5137807f3713645469f5d0d07d5cff87471b0' }
+Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
 
 " Plugins for Ruby
 Plug 'vim-ruby/vim-ruby'
@@ -166,8 +164,8 @@ nmap <C-c>r     <Plug>SetTmuxVars
 " vim-test configuration
 let test#strategy = "dispatch"
 " neomake configurations
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_javascript_eslint_exe = system('PATH=$(npm bin):$PATH && which eslint | tr -d "\n"')
+" let g:neomake_javascript_enabled_makers = ['eslint']
+" let g:neomake_javascript_eslint_exe = system('PATH=$(npm bin):$PATH && which eslint | tr -d "\n"')
 let g:neomake_elixir_enabled_makers = []
 " let g:neomake_error_sign = {'text': '❌'}
 " let g:neomake_warning_sign = {'text': '❗️'}
@@ -198,6 +196,7 @@ set omnifunc=syntaxcomplete#Complete
 set completefunc=syntaxcomplete#Complete
 set complete=.,w,b,u,U,t,i,d
 
+call deoplete#custom#option('num_processes', 1)
 let g:deoplete#enable_at_startup = 1
 
 " Autocompletion for swift

@@ -46,6 +46,8 @@ ZSH_THEME="pz_simple"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+export ZSH_DISABLE_COMPFIX=true
+
 source /usr/local/homebrew/opt/asdf/asdf.sh
 
 # rbenv initializer
