@@ -66,6 +66,7 @@ Plug 'arakashic/chromatica.nvim'
 " Plug 'mitsuse/autocomplete-swift'
 
 Plug 'kelan/gyp.vim'
+Plug 'jparise/vim-graphql'
 
 " Themes
 Plug 'trevordmiller/nova-vim'
