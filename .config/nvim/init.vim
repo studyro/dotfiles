@@ -45,6 +45,7 @@ Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'], 'do'
 Plug 'ternjs/tern_for_vim'
 Plug 'HerringtonDarkholme/yats.vim', { 'commit': '4bf5137807f3713645469f5d0d07d5cff87471b0' }
 Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
+Plug 'mustache/vim-mustache-handlebars'
 
 " Plugins for Ruby
 Plug 'vim-ruby/vim-ruby'
@@ -52,6 +53,9 @@ Plug 'skalnik/vim-vroom'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-rails'
+
+" Plugins for Go
+Plug 'fatih/vim-go'
 
 " Plugins for elixir
 Plug 'elixir-lang/vim-elixir'
