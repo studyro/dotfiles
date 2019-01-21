@@ -1,5 +1,4 @@
 set nocompatible              " be iMproved, required
-set re=1
 syntax on
 filetype on " required
 filetype plugin indent on    " required
@@ -43,7 +42,7 @@ Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'elzr/vim-json'
 Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm i -g tern' }
 Plug 'ternjs/tern_for_vim'
-Plug 'HerringtonDarkholme/yats.vim', { 'commit': '4bf5137807f3713645469f5d0d07d5cff87471b0' }
+Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
 Plug 'mustache/vim-mustache-handlebars'
 
