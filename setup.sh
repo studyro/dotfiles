@@ -16,3 +16,4 @@ ln -s $DOT_FILES_DIR/.config/mpv $DOT_CONFIG_DIR/.config/mpv
 ln -s $DOT_FILES_DIR/.config/nvim $DOT_CONFIG_DIR/.config/nvim
 
 ln -s $DOT_FILES_DIR/xvim/.xvimrc $DOT_CONFIG_DIR/.xvimrc
+ln -s $DOT_FILES_DIR/idea/.ideavimrc $DOT_CONFIG_DIR/.ideavimrc
