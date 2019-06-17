@@ -48,12 +48,6 @@ ZSH_THEME="pz_simple"
 
 export ZSH_DISABLE_COMPFIX=true
 
-source $HOME/.asdf/asdf.sh
-
-# rbenv initializer
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-# swiftenv initializer
-if which swiftenv > /dev/null; then eval "$(swiftenv init -)"; fi
 # fzf initializer
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -120,3 +114,7 @@ fancy-ctrl-z () {
 }
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
+
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
+
