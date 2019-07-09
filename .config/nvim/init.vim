@@ -28,7 +28,6 @@ Plug 'janko-m/vim-test'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
 " Plugins for autocomplete
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
@@ -40,10 +39,8 @@ Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'elzr/vim-json'
-Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm i -g tern' }
-Plug 'ternjs/tern_for_vim'
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'mustache/vim-mustache-handlebars'
 
 " Plugins for Ruby
@@ -66,7 +63,6 @@ Plug 'lambdatoast/elm.vim'
 " Plugin for clang-based languages
 Plug 'https://github.com/keith/swift.vim.git'
 Plug 'arakashic/chromatica.nvim'
-" Plug 'mitsuse/autocomplete-swift'
 
 Plug 'kelan/gyp.vim'
 Plug 'jparise/vim-graphql'
@@ -174,9 +170,6 @@ autocmd BufWritePost,BufEnter * Neomake
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 " javascript-libraries-syntax
 let g:used_javascript_libs = 'react'
-" deoplete-tern configrations
-let g:tern_request_timeout = 1
-let g:tern#command = ["node", '/usr/local/homebrew/bin/tern', '--no-port-file']
 
 " Configuration for neosnippet.vim
 imap <C-f>     <Plug>(neosnippet_expand_or_jump)
@@ -186,18 +179,19 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 let g:neosnippet#snippets_directory='~/.vim/plugged/vim-snippets/snippets'
 
-" Configuration for chromatica
-" let g:chromatica#libclang_path='/usr/bin/clang'
-" let g:chromatica#enable_at_startup = 1
-
 set infercase
 set completeopt=menuone
 set omnifunc=syntaxcomplete#Complete
 set completefunc=syntaxcomplete#Complete
 set complete=.,w,b,u,U,t,i,d
 
-call deoplete#custom#option('num_processes', 1)
-let g:deoplete#enable_at_startup = 1
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
 
 " Autocompletion for swift
 " call sourcekitten_daemon#enable(6600)
@@ -231,18 +225,6 @@ augroup configgroup
             autocmd BufNewFile,BufRead *.html.eex set filetype=html.eelixir
             autocmd BufNewFile,BufRead *.html.erb set filetype=html.eruby
             autocmd FileType typescript,typescript.tsx setlocal indentkeys+=0
-augroup END
-
-augroup omni_complete
-  " clear commands before resetting
-  autocmd!
-  " Enable omnicomplete for supported filetypes
-  autocmd FileType css,scss setlocal omnifunc=csscomplete#CompleteCSS
-  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-  autocmd FileType elixir setlocal omnifunc=elixircomplete#Complete
 augroup END
 
 " Tmux + Vim navigating.
