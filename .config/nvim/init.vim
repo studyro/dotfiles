@@ -192,6 +192,14 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 " Autocompletion for swift
 " call sourcekitten_daemon#enable(6600)
