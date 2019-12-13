@@ -25,4 +25,5 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
+*.xctimeline
 tags
