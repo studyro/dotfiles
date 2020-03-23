@@ -78,6 +78,7 @@ source $ZSH/oh-my-zsh.sh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # Android
+export JAVA_HOME=$(/usr/libexec/java_home)
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export ANDROID_SDK=$HOME/Library/Android/sdk
 export ANDROID_NDK=$HOME/Library/Android/android-ndk-r17c
