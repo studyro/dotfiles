@@ -81,7 +81,7 @@ source $ZSH/oh-my-zsh.sh
 export JAVA_HOME=$(/usr/libexec/java_home)
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export ANDROID_SDK=$HOME/Library/Android/sdk
-export ANDROID_NDK=$HOME/Library/Android/android-ndk-r17c
+export ANDROID_NDK=$HOME/Library/Android/android-ndk-r20
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
