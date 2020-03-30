@@ -164,7 +164,7 @@ nmap <C-c>r     <Plug>SetTmuxVars
 " vim-test configuration
 let test#strategy = "dispatch"
 " neomake configurations
-let g:neomake_html_eelixir_enabled_makers = ['htmlhint']
+let g:neomake_html_eelixir_enabled_makers = []
 autocmd BufWritePost,BufEnter * Neomake
 " jsx configurations
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
