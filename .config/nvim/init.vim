@@ -69,6 +69,9 @@ Plug 'jparise/vim-graphql'
 
 " Themes
 Plug 'trevordmiller/nova-vim'
+Plug 'arcticicestudio/nord-vim'
+Plug 'mhartington/oceanic-next'
+Plug 'ajh17/Spacegray.vim'
 
 " ll of your Plugins must be added before the following line
 call plug#end()
@@ -79,10 +82,12 @@ if (has("termguicolors"))
   set termguicolors
 endif
 set background=dark
-" colorscheme spacegray
-colorscheme nova
-let g:hybrid_custom_term_colors = 1
-let g:hybrid_reduced_contrast = 0 " Remove this line if using the default palette.
+" let g:spacegray_low_contrast = 1
+colorscheme spacegray
+" colorscheme nova
+" colorscheme OceanicNext
+" let g:hybrid_custom_term_colors = 1
+" let g:hybrid_reduced_contrast = 0 " Remove this line if using the default palette.
 
 " Basic Configurations
 set tabstop=2
@@ -170,6 +175,16 @@ autocmd BufWritePost,BufEnter * Neomake
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 " javascript-libraries-syntax
 let g:used_javascript_libs = 'react'
+
+" vim-go configurations
+let g:go_code_completion_enabled = 0
+let g:go_gopls_enabled = 0 " disable gopls for vim-go, we use coc-go for code completion
+let g:go_def_mapping_enabled = 0
+let g:go_highlight_operators = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
 
 " Configuration for neosnippet.vim
 imap <C-f>     <Plug>(neosnippet_expand_or_jump)
