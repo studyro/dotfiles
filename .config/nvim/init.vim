@@ -13,6 +13,7 @@ Plug 'jgdavey/tslime.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 Plug 'bling/vim-airline'
+Plug 'bling/vim-airline-themes'
 Plug 'majutsushi/tagbar' " nmap <leader>t :TagbarToggle<CR>
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
@@ -82,12 +83,9 @@ if (has("termguicolors"))
   set termguicolors
 endif
 set background=dark
-" let g:spacegray_low_contrast = 1
 colorscheme spacegray
+let g:airline_theme='onedark'
 " colorscheme nova
-" colorscheme OceanicNext
-" let g:hybrid_custom_term_colors = 1
-" let g:hybrid_reduced_contrast = 0 " Remove this line if using the default palette.
 
 " Basic Configurations
 set tabstop=2
