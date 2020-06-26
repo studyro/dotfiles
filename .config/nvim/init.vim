@@ -12,8 +12,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'jgdavey/tslime.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
-Plug 'bling/vim-airline'
-Plug 'bling/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'majutsushi/tagbar' " nmap <leader>t :TagbarToggle<CR>
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
@@ -83,7 +83,7 @@ if (has("termguicolors"))
   set termguicolors
 endif
 set background=dark
-colorscheme spacegray
+colorscheme spacegray_custom
 let g:airline_theme='onedark'
 " colorscheme nova
 
@@ -274,3 +274,7 @@ else
         map <C-k> <C-w>k
         map <C-l> <C-w>l
 endif
+
+nnoremap <leader>h :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
