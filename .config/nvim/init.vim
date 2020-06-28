@@ -40,9 +40,10 @@ Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'elzr/vim-json'
-Plug 'HerringtonDarkholme/yats.vim'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'mustache/vim-mustache-handlebars'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'MaxMEllon/vim-jsx-pretty'
 
 " Plugins for Ruby
 Plug 'vim-ruby/vim-ruby'
