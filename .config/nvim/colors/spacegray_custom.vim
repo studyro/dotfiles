@@ -92,7 +92,7 @@ call s:highlight_helper("Cursor", s:black, s:white) " the character under the cu
 " call s:highlight_helper("CursorIM", {}) " like Cursor, but used when in IME mode
 call s:highlight_helper("CursorColumn", "NONE", s:lightgray) " the screen column that the cursor is in when 'cursorcolumn' is set
 call s:highlight_helper("CursorLine", "NONE", s:lightgray) " the screen line that the cursor is in when 'cursorline' is set
-call s:highlight_helper("Directory", s:white, "") " directory names (and other special names in listings)
+call s:highlight_helper("Directory", s:yellow, "") " directory names (and other special names in listings)
 call s:highlight_helper("EndOfBuffer", s:black, "") " filler lines (~) after the last line in the buffer
 call s:highlight_helper("ErrorMsg", s:red, "") " error messages on the command line
 call s:highlight_helper("VertSplit", s:menugray, "") " the column separating vertically split windows
@@ -406,9 +406,6 @@ call s:highlight_helper("dockerfileKeyword", s:purple, "")
 
 " Others
 call s:highlight_helper("EasyMotionShade", s:menugray, "")
-" call s:highlight_helper("fzf1", s:black, s:lightgray)
-" call s:highlight_helper("fzf2", s:black, s:lightgray)
-" call s:highlight_helper("fzf3", s:black, s:lightgray)
 call s:highlight_helper("EasyMotionTarget", s:red, "", "BOLD")
 call s:highlight_helper("EasyMotionTarget2First", s:green, "")
 call s:highlight_helper("EasyMotionTarget2Second", s:yellow, "")
