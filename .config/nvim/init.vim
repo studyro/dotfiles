@@ -46,7 +46,6 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
 
 " Plugins for Ruby
-Plug 'vim-ruby/vim-ruby'
 Plug 'skalnik/vim-vroom'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-bundler'
