@@ -344,6 +344,7 @@ call s:highlight_helper("goBuiltins", s:red, "")
 call s:highlight_helper("elixirKeyword", s:purple, "")
 call s:highlight_helper("elixirInclude", s:purple, "")
 call s:highlight_helper("elixirDefine", s:purple, "")
+call s:highlight_helper("elixirExUnitMacro", s:purple, "")
 call s:highlight_helper("elixirPrivateDefine", s:purple, "")
 call s:highlight_helper("elixirModuleDefine", s:purple, "")
 call s:highlight_helper("elixirBlockDefinition", s:purple, "")
@@ -457,17 +458,17 @@ let g:terminal_color_15 = s:white
 let g:fzf_colors = {
 \ "fg":      ["fg", "Normal"],
 \ "bg":      ["bg", "Normal"],
-\ "hl":      ["fg", "Underlined"],
+\ "hl":      ["fg", "String"],
 \ "fg+":     ["fg", "CursorLine", "CursorColumn", "Normal"],
 \ "bg+":     ["bg", "CursorLine", "CursorColumn"],
-\ "hl+":     ["fg", "Underlined"],
-\ "info":    ["fg", "Underlined"],
+\ "hl+":     ["fg", "String"],
+\ "info":    ["fg", "String"],
 \ "border":  ["fg", "Ignore"],
 \ "prompt":  ["fg", "Comment"],
-\ "pointer": ["fg", "Underlined"],
-\ "marker":  ["fg", "Underlined"],
-\ "spinner": ["fg", "Underlined"],
-\ "header":  ["fg", "Underlined"] 
+\ "pointer": ["fg", "String"],
+\ "marker":  ["fg", "String"],
+\ "spinner": ["fg", "String"],
+\ "header":  ["fg", "String"] 
 \}
 
 " VIM-POLYGLOT
