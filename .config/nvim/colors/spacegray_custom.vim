@@ -405,6 +405,10 @@ call s:highlight_helper("markdownCodeDelimiter", s:blue, "")
 " Dockerfile
 call s:highlight_helper("dockerfileKeyword", s:purple, "")
 
+" Yaml
+call s:highlight_helper("yamlBlockMappingKey", s:red, "")
+call s:highlight_helper("yamlPlainScalar", s:yellow, "")
+
 " Others
 call s:highlight_helper("EasyMotionShade", s:menugray, "")
 call s:highlight_helper("EasyMotionTarget", s:red, "", "BOLD")
