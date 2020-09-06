@@ -27,7 +27,7 @@ let g:colors_name = "spacegray_custom"
 
 let s:black = "#20262F"
 let s:red = "#BF6262"
-let s:green = "#A2A565"
+let s:green = "#85A7A5"
 let s:yellow = "#E5C078"
 let s:blue = "#8FA0B2"
 let s:purple = "#D791AE"
