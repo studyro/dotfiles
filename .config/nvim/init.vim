@@ -151,11 +151,12 @@ nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <C-p>     :Files<CR>
 
 " fzf configuration
-let g:fzf_height='30%'
 if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 endif
 let g:ag_highlight=1
+let g:fzf_layout = { 'window': { 'width': 0.7, 'height': 0.7 } }
+let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1,4"
 
 " tslime configuration
 let g:tslime_always_current_session = 1
