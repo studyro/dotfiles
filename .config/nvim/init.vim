@@ -56,7 +56,6 @@ Plug 'fatih/vim-go'
 
 " Plugins for elixir
 Plug 'elixir-editors/vim-elixir'
-Plug 'slashmili/alchemist.vim'
 
 " Plugins for elm
 Plug 'lambdatoast/elm.vim'
