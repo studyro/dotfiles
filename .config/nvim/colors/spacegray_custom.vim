@@ -331,6 +331,18 @@ call s:highlight_helper("typescriptTypeParameter", s:blue, "")
 call s:highlight_helper("typescriptCastKeyword", s:purple, "")
 call s:highlight_helper("typescriptObjectLabel", s:white, "")
 
+call s:highlight_helper("typescriptFileListMethod", s:blue, "")
+call s:highlight_helper("typescriptDomDocProp", s:blue, "")
+call s:highlight_helper("typescriptDomDocMethod", s:blue, "")
+call s:highlight_helper("typescriptDomNodeMethod", s:blue, "")
+call s:highlight_helper("typescriptDomEventTargetMethod", s:blue, "")
+call s:highlight_helper("typescriptDomFormProp", s:blue, "")
+call s:highlight_helper("typescriptBOMNavigatorProp", s:blue, "")
+call s:highlight_helper("typescriptBOMLocationMethod", s:blue, "")
+call s:highlight_helper("typescriptArrayMethod", s:blue, "")
+call s:highlight_helper("typescriptStringMethod", s:blue, "")
+call s:highlight_helper("typescriptES6SetMethod", s:blue, "")
+
 " Go
 call s:highlight_helper("goConst", s:purple, "")
 call s:highlight_helper("goDeclaration", s:purple, "")
