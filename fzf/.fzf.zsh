@@ -1,26 +1,16 @@
 # Setup fzf
 # ---------
-if [[ ! "$PATH" == *$HOME/zhangstudyro/.fzf/bin* ]]; then
-  export PATH="$PATH:$HOME/.fzf/bin"
-fi
-
-# Man path
-# --------
-if [[ ! "$MANPATH" == *$HOME/.fzf/man* && -d "$HOME/.fzf/man" ]]; then
-  export MANPATH="$MANPATH:$HOME/.fzf/man"
+if [[ ! "$PATH" == */Users/peterzhang/.fzf/bin* ]]; then
+  export PATH="${PATH:+${PATH}:}/Users/peterzhang/.fzf/bin"
 fi
 
 # Auto-completion
 # ---------------
-[[ $- == *i* ]] && source "$HOME/.fzf/shell/completion.zsh" 2> /dev/null
-
-export FZF_DEFAULT_COMMAND='ag -g ""'
-export FZF_DEFAULT_OPTS="--reverse --inline-info"
-export FZF_TMUX_HEIGHT=30%
-
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+[[ $- == *i* ]] && source "/Users/peterzhang/.fzf/shell/completion.zsh" 2> /dev/null
 
 # Key bindings
 # ------------
-source "$HOME/.fzf/shell/key-bindings.zsh"
+source "/Users/peterzhang/.fzf/shell/key-bindings.zsh"
 
+export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
