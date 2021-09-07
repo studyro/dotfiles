@@ -31,6 +31,10 @@ Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'nvim-treesitter/playground'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'TimUntersberger/neogit'
+Plug 'sindrets/diffview.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'romgrk/barbar.nvim'
 
 " Plugins for autocomplete
 Plug 'Shougo/denite.nvim'
@@ -157,6 +161,9 @@ let g:ag_highlight=1
 nnoremap <leader>ff :Telescope find_files<CR>
 nnoremap <leader>fg :Telescope live_grep<CR>
 
+" Neogit
+nnoremap <leader>g :Neogit<CR>
+
 " tslime configuration
 let g:tslime_always_current_session = 1
 let g:tslime_always_current_window = 1
@@ -275,9 +282,7 @@ else
         map <C-l> <C-w>l
 endif
 
-nnoremap <leader>h :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+nnoremap <leader>h :TSHighlightCapturesUnderCursor<CR>
 
 lua <<EOF
 require('nvim-treesitter.configs').setup {
