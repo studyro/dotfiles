@@ -7,8 +7,6 @@ call plug#begin('~/.vim/plugged')
 
 " General plugins
 Plug 'rking/ag.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 Plug 'jgdavey/tslime.vim', { 'branch': 'main' }
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
@@ -28,6 +26,12 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'janko-m/vim-test'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
+" Plugins for nvim 0.5
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+Plug 'nvim-treesitter/playground'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
 " Plugins for autocomplete
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/neosnippet'
@@ -42,7 +46,7 @@ Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'elzr/vim-json'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'mustache/vim-mustache-handlebars'
-Plug 'HerringtonDarkholme/yats.vim'
+" Plug 'HerringtonDarkholme/yats.vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
 
 " Plugins for Ruby
@@ -68,9 +72,6 @@ Plug 'kelan/gyp.vim'
 Plug 'jparise/vim-graphql'
 
 " Themes
-Plug 'trevordmiller/nova-vim'
-Plug 'arcticicestudio/nord-vim'
-Plug 'mhartington/oceanic-next'
 Plug 'ajh17/Spacegray.vim'
 
 " ll of your Plugins must be added before the following line
@@ -101,7 +102,7 @@ set shell=zsh
 set clipboard=unnamed
 set splitright
 set splitbelow
-set mouse=a
+" set mouse=a
 set tags=./tags,tags;$HOME
 set laststatus=2
 
@@ -146,16 +147,15 @@ nnoremap <leader>o :CtrlPTag<CR>
 nnoremap <leader>t :TagbarToggle<CR>
 " A remap to NERDTree toggling
 nnoremap <leader>n :NERDTreeToggle<CR>
-" A remap to fzf toggling
-nnoremap <C-p>     :Files<CR>
 
-" fzf configuration
 if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 endif
 let g:ag_highlight=1
-let g:fzf_layout = { 'window': { 'width': 0.7, 'height': 0.7 } }
-let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1,4"
+
+" telescope.nvim configurations
+nnoremap <leader>ff :Telescope find_files<CR>
+nnoremap <leader>fg :Telescope live_grep<CR>
 
 " tslime configuration
 let g:tslime_always_current_session = 1
@@ -278,3 +278,31 @@ endif
 nnoremap <leader>h :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+lua <<EOF
+require('nvim-treesitter.configs').setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  -- ignore_install = { "javascript" }, -- List of parsers to ignore installing
+  highlight = {
+    enable = true,
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
+local actions = require('telescope.actions')
+require('telescope').setup {
+  defaults = {
+    layout_config = {
+      width = 0.7,
+    },
+    mappings = {
+      i = {
+        ["<esc>"] = actions.close
+      },
+    },
+  },
+}
+EOF
