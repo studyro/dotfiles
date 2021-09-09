@@ -32,6 +32,7 @@ let s:yellow = "#E5C078"
 let s:blue = "#8FA0B2"
 let s:purple = "#D791AE"
 let s:cyan = "#638E8A"
+let s:bluegray = "#789BAD"
 let s:lightgray = "#2E3032"
 let s:menugray = "#5D6369"
 let s:white = "#C0C5CE"
@@ -182,9 +183,13 @@ if has("nvim")
   call s:highlight_helper("TSVariable", s:white, "")
   call s:highlight_helper("TSVariableBuiltin", s:purple, "")
 
+  call s:highlight_helper("TSLabel", s:red, "")
+  call s:highlight_helper("TSSymbol", s:constant_orange, "")
   call s:highlight_helper("TSNamespace", s:yellow, "")
 
   call s:highlight_helper("TelescopeMatching", s:yellow, "")
+  call s:highlight_helper("SnapPosition", s:yellow, "")
+  call s:highlight_helper("SnapSelect", s:white, s:lightgray)
 endif
 
 " ==================================================================
