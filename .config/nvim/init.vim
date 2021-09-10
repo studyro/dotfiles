@@ -9,7 +9,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'rking/ag.vim'
 Plug 'jgdavey/tslime.vim', { 'branch': 'main' }
 Plug 'tpope/vim-fugitive'
-Plug 'junegunn/gv.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'majutsushi/tagbar' " nmap <leader>t :TagbarToggle<CR>
@@ -19,11 +18,8 @@ Plug 'benekastah/neomake'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-dispatch'
+" Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-unimpaired'
-Plug 'radenling/vim-dispatch-neovim'
-Plug 'jiangmiao/auto-pairs'
-Plug 'janko-m/vim-test'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
 " Plugins for nvim 0.5
@@ -33,25 +29,20 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'TimUntersberger/neogit'
 Plug 'sindrets/diffview.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'romgrk/barbar.nvim'
+Plug 'folke/twilight.nvim'
+Plug 'folke/zen-mode.nvim'
+Plug 'windwp/nvim-autopairs'
+" Plug 'kyazdani42/nvim-web-devicons'
 
 " Plugins for autocomplete
-Plug 'Shougo/denite.nvim'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'honza/vim-snippets'
 
 " Plugins for JavaScript
-Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'elzr/vim-json'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'mustache/vim-mustache-handlebars'
-" Plug 'HerringtonDarkholme/yats.vim'
-Plug 'MaxMEllon/vim-jsx-pretty'
 
 " Plugins for Ruby
 Plug 'skalnik/vim-vroom'
@@ -70,7 +61,6 @@ Plug 'lambdatoast/elm.vim'
 
 " Plugin for clang-based languages
 Plug 'https://github.com/keith/swift.vim.git'
-Plug 'arakashic/chromatica.nvim'
 
 Plug 'kelan/gyp.vim'
 Plug 'jparise/vim-graphql'
@@ -308,6 +298,10 @@ require('telescope').setup {
         ["<esc>"] = actions.close
       },
     },
+    file_sorter =  require'telescope.sorters'.get_fzy_sorter,
   },
 }
+require('twilight').setup {}
+require('zen-mode').setup {}
+require('nvim-autopairs').setup {}
 EOF
