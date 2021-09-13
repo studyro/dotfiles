@@ -183,6 +183,7 @@ if has("nvim")
   call s:highlight_helper("TSVariable", s:white, "")
   call s:highlight_helper("TSVariableBuiltin", s:purple, "")
 
+  call s:highlight_helper("TSTag", s:yellow, "")
   call s:highlight_helper("TSLabel", s:red, "")
   call s:highlight_helper("TSSymbol", s:constant_orange, "")
   call s:highlight_helper("TSNamespace", s:yellow, "")
