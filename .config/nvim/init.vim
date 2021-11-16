@@ -1,8 +1,3 @@
-set nocompatible              " be iMproved, required
-syntax on
-filetype on " required
-filetype plugin indent on    " required
-
 call plug#begin('~/.vim/plugged')
 
 " General plugins
@@ -34,14 +29,18 @@ Plug 'folke/zen-mode.nvim'
 Plug 'windwp/nvim-autopairs'
 " Plug 'kyazdani42/nvim-web-devicons'
 
-" Plugins for autocomplete
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
+" Plugins for autocomplete on nvim 0.5+
+Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/nvim-lsp-installer'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'dcampos/nvim-snippy'
 Plug 'honza/vim-snippets'
+Plug 'dcampos/cmp-snippy'
 
 " Plugins for JavaScript
 Plug 'pangloss/vim-javascript'
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+" Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'mustache/vim-mustache-handlebars'
 
 " Plugins for Ruby
@@ -133,10 +132,7 @@ set wildignore+=.DS_Store
 " A remap to Ag.vim
 nnoremap <leader>a :Ag!<space>
 " A remap to search the word under cursor
-" nnoremap <leader>k :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 nnoremap <leader>k :Ag! "\b<C-R><C-W>\b"
-" A remap to CtrlP Tag searching
-nnoremap <leader>o :CtrlPTag<CR>
 " A remap to TagBar.vim toggling
 nnoremap <leader>t :TagbarToggle<CR>
 " A remap to NERDTree toggling
@@ -161,8 +157,6 @@ vmap <C-c><C-c> <Plug>SendSelectionToTmux
 nmap <C-c><C-c> <Plug>NormalModeSendToTmux
 nmap <C-c>r     <Plug>SetTmuxVars
 
-" vim-test configuration
-let test#strategy = "dispatch"
 " neomake configurations
 let g:neomake_html_eelixir_enabled_makers = []
 autocmd BufWritePost,BufEnter * Neomake
@@ -181,68 +175,42 @@ let g:go_highlight_function_calls = 1
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 
-" Configuration for neosnippet.vim
-imap <C-f>     <Plug>(neosnippet_expand_or_jump)
-smap <C-f>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-f>     <Plug>(neosnippet_expand_target)
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-let g:neosnippet#snippets_directory='~/.vim/plugged/vim-snippets/snippets'
-
 set infercase
-set completeopt=menuone
+set completeopt=menu,menuone,noselect
 set omnifunc=syntaxcomplete#Complete
 set completefunc=syntaxcomplete#Complete
 set complete=.,w,b,u,U,t,i,d
 
 " Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+" nmap <silent> gd <Plug>(coc-definition)
+" nmap <silent> gy <Plug>(coc-type-definition)
+" nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gr <Plug>(coc-references)
 " Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" Autocompletion for swift
-" call sourcekitten_daemon#enable(6600)
+" nmap <leader>rn <Plug>(coc-rename)
+" nnoremap <silent> K :call <SID>show_documentation()<CR>
+" function! s:show_documentation()
+"   if (index(['vim','help'], &filetype) >= 0)
+"     execute 'h '.expand('<cword>')
+"   else
+"     call CocAction('doHover')
+"   endif
+" endfunction
 
 " Autogroups for some type of files.
 augroup configgroup
-            autocmd!
-            autocmd VimEnter * highlight clear SignColumn
-            "autocmd BufWritePre *.php,*.py,*.js,*.txt,*.hs,*.java,*.md
-            "                        \:call <SID>StripTrailingWhitespaces()
-            autocmd FileType java setlocal noexpandtab
-            autocmd FileType java setlocal list
-            autocmd FileType java setlocal listchars=tab:+\ ,eol:-
-            autocmd FileType java setlocal formatprg=par\ -w80\ -T4
-            autocmd FileType php setlocal expandtab
-            autocmd FileType php setlocal list
-            autocmd FileType php setlocal listchars=tab:+\ ,eol:-
-            autocmd FileType php setlocal formatprg=par\ -w80\ -T4
-            autocmd FileType python setlocal commentstring=#\ %s
-            autocmd BufEnter *.cls setlocal filetype=java
-            autocmd BufEnter *.zsh-theme setlocal filetype=zsh
-            autocmd BufEnter Makefile setlocal noexpandtab
-            autocmd BufEnter *.sh setlocal tabstop=2
-            autocmd BufEnter *.sh setlocal shiftwidth=2
-            autocmd BufEnter *.sh setlocal softtabstop=2
-            autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
-            autocmd BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
-            autocmd BufNewFile,BufRead Fastfile set filetype=ruby
-            autocmd BufNewFile,BufRead Dangerfile set filetype=ruby
-            autocmd BufNewFile,BufRead Appfile set filetype=ruby
-            autocmd BufNewFile,BufRead *.html.eex set filetype=html.eelixir
-            autocmd BufNewFile,BufRead *.html.erb set filetype=html.eruby
-            autocmd FileType typescript,typescript.tsx setlocal indentkeys+=0
+  autocmd!
+  autocmd VimEnter * highlight clear SignColumn
+  autocmd BufEnter *.cls setlocal filetype=java
+  autocmd BufEnter *.zsh-theme setlocal filetype=zsh
+  autocmd BufEnter Makefile setlocal noexpandtab
+  autocmd BufEnter *.sh setlocal tabstop=2
+  autocmd BufEnter *.sh setlocal shiftwidth=2
+  autocmd BufEnter *.sh setlocal softtabstop=2
+  autocmd BufNewFile,BufRead Fastfile set filetype=ruby
+  autocmd BufNewFile,BufRead Dangerfile set filetype=ruby
+  autocmd BufNewFile,BufRead Appfile set filetype=ruby
+  autocmd FileType typescript,typescript.tsx setlocal indentkeys+=0
 augroup END
 
 " Tmux + Vim navigating.
@@ -308,4 +276,79 @@ require('telescope').setup {
 require('twilight').setup {}
 require('zen-mode').setup {}
 require('nvim-autopairs').setup {}
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  local opts = { noremap=true, silent=true }
+
+  buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+end
+
+local lsp_installer = require('nvim-lsp-installer')
+lsp_installer.on_server_ready(function(server)
+  local opts = {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  }
+
+  if server.name == "sumneko_lua" then
+    opts.settings = {
+      Lua = {
+        diagnostics = {
+          globals = { 'vim' }
+        }
+      }
+    }
+  end
+
+  server:setup(opts)
+end)
+
+local snippy = require('snippy')
+local cmp = require('cmp')
+cmp.setup {
+  snippet = {
+    expand = function(args)
+      snippy.expand_snippet(args.body)
+    end,
+  },
+  mapping = {
+    ['<Tab>'] = function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif snippy.can_expand_or_advance() then
+        snippy.expand_or_advance()
+      else
+        fallback()
+      end
+    end,
+    ['<S-Tab>'] = function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif snippy.can_jump(-1) then
+        snippy.previous()
+      else
+        fallback()
+      end
+    end,
+    ['<CR>'] = cmp.mapping.confirm {
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true
+    },
+  },
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'snippy' },
+    { name = 'buffer' },
+  },
+}
 EOF
+
