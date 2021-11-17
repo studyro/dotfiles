@@ -1,6 +1,9 @@
 local opt = vim.opt
-local g = vim.g
 
+vim.cmd('let $NVIM_TUI_ENABLE_TRUE_COLOR=1')
+opt.background = 'dark'
+opt.termguicolors = true
+vim.cmd('colorscheme spacegray_custom')
 -- Basic Configurations
 opt.tabstop = 2
 opt.softtabstop = 2
@@ -64,28 +67,7 @@ augroup configgroup
   autocmd BufNewFile,BufRead Appfile set filetype=ruby
   autocmd FileType typescript,typescript.tsx setlocal indentkeys+=0
 augroup END
-]])
+]], true)
 
-g.leader = ','
+vim.g.leader = ','
 
--- plugins
-g.ag_highlight = 1
-
-g.jsx_ext_required = 0 -- Allow JSX in normal JS files
-g.used_javascript_libs = 'react'
-
-g.tslime_always_current_session = 1
-g.tslime_always_current_window = 1
-
--- g.neomake_html_eelixir_enabled_makers = {}
-
-g.go_code_completion_enabled = 0
-g.go_gopls_enabled = 0 -- disable gopls for vim-go, we use coc-go for code completion
-g.go_def_mapping_enabled = 0
-g.go_highlight_operators = 1
-g.go_highlight_functions = 1
-g.go_highlight_function_calls = 1
-g.go_highlight_types = 1
-g.go_highlight_fields = 1
-
-g.airline_theme = 'onedark'
