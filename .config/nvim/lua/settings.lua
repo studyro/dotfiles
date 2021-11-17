@@ -69,5 +69,5 @@ augroup configgroup
 augroup END
 ]], true)
 
-vim.g.leader = ','
+vim.g.mapleader = ','
 
