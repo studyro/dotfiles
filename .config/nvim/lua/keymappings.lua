@@ -2,7 +2,7 @@ local utils = require('utils')
 
 utils.map('n', '<leader><space>', ':nohlsearch<CR>')
 utils.map('n', '<leader>a', ':Ag!<space>')
-utils.map('n', '<leader>k', ':Ag! "\b<C-R><C-W>\b"')
+utils.map('n', '<leader>k', ':Ag! <C-R><C-W>')
 utils.map('n', '<leader>n', ':NERDTreeToggle<CR>')
 
 utils.map('n', '<leader>ff', ':Telescope find_files<CR>')
