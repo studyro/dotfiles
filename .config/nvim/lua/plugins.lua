@@ -36,6 +36,7 @@ require "paq" {
   'dcampos/nvim-snippy';
   'honza/vim-snippets';
   'dcampos/cmp-snippy';
+  {'michaelb/sniprun', run = 'bash install.sh'};
 
   -- Plugins for JavaScript
   'pangloss/vim-javascript';
@@ -210,4 +211,7 @@ require('tmux').setup {
     enable_default_keybindings = true,
   }
 }
+
+local lspconfig = require('lspconfig')
+lspconfig.clangd.setup{}
 

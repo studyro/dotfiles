@@ -1,4 +1,4 @@
-export PATH="/usr/local/homebrew/bin:/usr/local/sbin:$PATH:$HOME/.depot_tools"
+export PATH="/usr/local/homebrew/bin:/usr/local/sbin:$PATH:$HOME/.depot_tools:$HOME/.asdf/installs/rust/1.62.1/env"
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
