@@ -95,7 +95,7 @@ g.go_highlight_fields = 1
 g.airline_theme = 'onedark'
 
 require('nvim-treesitter.configs').setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   -- ignore_install = { "javascript" }, -- List of parsers to ignore installing
   highlight = {
     enable = true,
@@ -128,8 +128,7 @@ require('twilight').setup {}
 require('zen-mode').setup {}
 require('nvim-autopairs').setup {}
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local on_attach = function(client, bufnr) ---@diagnostic disable-line
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
