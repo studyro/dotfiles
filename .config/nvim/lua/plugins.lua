@@ -31,6 +31,7 @@ require "paq" {
   -- Plugins for autocomplete on nvim 0.5+
   'neovim/nvim-lspconfig';
   'williamboman/nvim-lsp-installer';
+  -- 'tamago324/nlsp-settings.nvim';
   'hrsh7th/nvim-cmp';
   'hrsh7th/cmp-nvim-lsp';
   'dcampos/nvim-snippy';
@@ -145,7 +146,6 @@ end
 local lsp_installer = require('nvim-lsp-installer')
 lsp_installer.on_server_ready(function(server)
   local opts = {
-    on_attach = on_attach,
     capabilities = capabilities,
   }
 
@@ -162,6 +162,11 @@ lsp_installer.on_server_ready(function(server)
   server:setup(opts)
 end)
 
+local lspconfig = require('lspconfig')
+lspconfig.clangd.setup{
+  on_attach = on_attach
+}
+
 local snippy = require('snippy')
 local cmp = require('cmp')
 cmp.setup {
@@ -170,7 +175,7 @@ cmp.setup {
       snippy.expand_snippet(args.body)
     end,
   },
-  mapping = {
+  mapping = cmp.mapping.preset.insert({
     ['<Tab>'] = function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -193,7 +198,7 @@ cmp.setup {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true
     },
-  },
+  }),
   sources = {
     { name = 'nvim_lsp' },
     { name = 'snippy' },
@@ -210,7 +215,4 @@ require('tmux').setup {
     enable_default_keybindings = true,
   }
 }
-
-local lspconfig = require('lspconfig')
-lspconfig.clangd.setup{}
 
