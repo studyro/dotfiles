@@ -132,6 +132,7 @@ require('nvim-autopairs').setup {}
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local on_attach = function(client, bufnr) ---@diagnostic disable-line
+  print(vim.inspect(client))
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   -- local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
@@ -144,26 +145,15 @@ local on_attach = function(client, bufnr) ---@diagnostic disable-line
 end
 
 local lsp_installer = require('nvim-lsp-installer')
-lsp_installer.on_server_ready(function(server)
-  local opts = {
-    capabilities = capabilities,
-  }
-
-  if server.name == "sumneko_lua" then
-    opts.settings = {
-      Lua = {
-        diagnostics = {
-          globals = { 'vim' }
-        }
-      }
-    }
-  end
-
-  server:setup(opts)
-end)
+lsp_installer.setup{}
 
 local lspconfig = require('lspconfig')
 lspconfig.clangd.setup{
+  capabilities = capabilities,
+  on_attach = on_attach
+}
+lspconfig.tsserver.setup{
+  capabilities = capabilities,
   on_attach = on_attach
 }
 

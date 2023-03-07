@@ -27,3 +27,5 @@ DerivedData
 *.xcuserstate
 *.xctimeline
 tags
+
+.ruby-bundles
