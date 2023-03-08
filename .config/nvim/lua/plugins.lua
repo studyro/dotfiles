@@ -65,7 +65,8 @@ require "paq" {
   'jparise/vim-graphql';
 
   -- Themes
-  'ajh17/Spacegray.vim';
+  -- 'ajh17/Spacegray.vim';
+  'EdenEast/nightfox.nvim'
 }
 
 local opt = vim.opt
@@ -132,7 +133,6 @@ require('nvim-autopairs').setup {}
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local on_attach = function(client, bufnr) ---@diagnostic disable-line
-  print(vim.inspect(client))
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   -- local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
