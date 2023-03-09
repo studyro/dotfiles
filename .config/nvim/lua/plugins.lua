@@ -1,3 +1,6 @@
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 require "paq" {
   "savq/paq-nvim";
   -- General plugins
@@ -7,7 +10,8 @@ require "paq" {
   'vim-airline/vim-airline';
   'vim-airline/vim-airline-themes';
   'majutsushi/tagbar'; -- nmap <leader>t :TagbarToggle<CR>
-  'scrooloose/nerdtree';
+  -- 'nvim-tree/nvim-web-devicons';
+  'nvim-tree/nvim-tree.lua';
   'tpope/vim-surround';
   'benekastah/neomake';
   'terryma/vim-multiple-cursors';
@@ -66,7 +70,9 @@ require "paq" {
 
   -- Themes
   -- 'ajh17/Spacegray.vim';
-  'EdenEast/nightfox.nvim'
+  -- 'EdenEast/nightfox.nvim';
+  -- 'rmehri01/onenord.nvim';
+  'AlexvZyl/nordic.nvim';
 }
 
 local opt = vim.opt
@@ -95,6 +101,8 @@ g.go_highlight_types = 1
 g.go_highlight_fields = 1
 
 g.airline_theme = 'onedark'
+
+require("nvim-tree").setup()
 
 require('nvim-treesitter.configs').setup {
   ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages

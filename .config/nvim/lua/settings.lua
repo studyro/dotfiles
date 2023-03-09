@@ -3,7 +3,8 @@ local opt = vim.opt
 vim.cmd('let $NVIM_TUI_ENABLE_TRUE_COLOR=1')
 opt.background = 'dark'
 opt.termguicolors = true
-vim.cmd('colorscheme nightfox')
+-- vim.cmd('colorscheme nightfox')
+vim.cmd('colorscheme nordic')
 -- Basic Configurations
 opt.tabstop = 2
 opt.softtabstop = 2
