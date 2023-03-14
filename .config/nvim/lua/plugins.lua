@@ -102,7 +102,17 @@ g.go_highlight_fields = 1
 
 g.airline_theme = 'onedark'
 
-require("nvim-tree").setup()
+require("nvim-tree").setup {
+  renderer = {
+    icons = {
+      show = {
+        file = false,
+        folder = false,
+        folder_arrow = false,
+      },
+    },
+  },
+}
 
 require('nvim-treesitter.configs').setup {
   ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
