@@ -4,21 +4,17 @@ vim.g.loaded_netrwPlugin = 1
 require "paq" {
   "savq/paq-nvim";
   -- General plugins
+  -- 'dstein64/vim-startuptime';
   'rking/ag.vim';
-  {'jgdavey/tslime.vim',  branch = 'main'};
+  {'jgdavey/tslime.vim', branch = 'main'};
   'tpope/vim-fugitive';
-  'vim-airline/vim-airline';
-  'vim-airline/vim-airline-themes';
   'majutsushi/tagbar'; -- nmap <leader>t :TagbarToggle<CR>
-  -- 'nvim-tree/nvim-web-devicons';
-  'nvim-tree/nvim-tree.lua';
   'tpope/vim-surround';
   'benekastah/neomake';
   'terryma/vim-multiple-cursors';
   'tpope/vim-commentary';
   'tpope/vim-repeat';
   'tpope/vim-unimpaired';
-  {'prettier/vim-prettier', run = 'npm install'};
 
   -- Plugins for nvim 0.5
   {'nvim-treesitter/nvim-treesitter', run = function() vim.api.nvim_command(':TSUpdate') end};
@@ -31,6 +27,9 @@ require "paq" {
   'folke/zen-mode.nvim';
   'windwp/nvim-autopairs';
   'aserowy/tmux.nvim';
+  'nvim-lualine/lualine.nvim';
+  -- 'nvim-tree/nvim-web-devicons';
+  'nvim-tree/nvim-tree.lua';
 
   -- Plugins for autocomplete on nvim 0.5+
   'neovim/nvim-lspconfig';
@@ -211,6 +210,12 @@ require('tmux').setup {
   navigation = {
     -- enables default keybindings (C-hjkl) for normal mode
     enable_default_keybindings = true,
+  }
+}
+
+require('lualine').setup {
+  options = {
+    theme = 'nord'
   }
 }
 
