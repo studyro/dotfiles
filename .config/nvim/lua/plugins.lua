@@ -17,11 +17,11 @@ require "paq" {
   'tpope/vim-unimpaired';
 
   -- Plugins for nvim 0.5
-  {'nvim-treesitter/nvim-treesitter', run = function() vim.api.nvim_command(':TSUpdate') end};
+  {'nvim-treesitter/nvim-treesitter', build = function() vim.api.nvim_command(':TSUpdate') end};
   'nvim-treesitter/playground';
   'nvim-lua/plenary.nvim';
   'nvim-telescope/telescope.nvim';
-  {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'};
+  {'nvim-telescope/telescope-fzf-native.nvim', build = 'make'};
   'TimUntersberger/neogit';
   'sindrets/diffview.nvim';
   'folke/twilight.nvim';
@@ -41,7 +41,7 @@ require "paq" {
   'dcampos/nvim-snippy';
   'honza/vim-snippets';
   'dcampos/cmp-snippy';
-  {'michaelb/sniprun', run = 'bash install.sh'};
+  {'michaelb/sniprun', build = 'bash install.sh'};
 
   -- Plugins for AI
   'Bryley/neoai.nvim';
@@ -187,6 +187,7 @@ lspconfig.tsserver.setup{
   capabilities = capabilities,
   on_attach = on_attach
 }
+lspconfig.eslint.setup{}
 
 local snippy = require('snippy')
 local cmp = require('cmp')
