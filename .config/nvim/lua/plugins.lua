@@ -76,7 +76,8 @@ require "paq" {
   -- 'ajh17/Spacegray.vim';
   -- 'EdenEast/nightfox.nvim';
   -- 'rmehri01/onenord.nvim';
-  'AlexvZyl/nordic.nvim';
+  -- 'AlexvZyl/nordic.nvim';
+  {'rmehri01/onenord.nvim', branch = 'main'};
 }
 
 local opt = vim.opt
@@ -307,4 +308,6 @@ require('neoai').setup {
     },
   },
 }
+
+require('onenord').setup()
 

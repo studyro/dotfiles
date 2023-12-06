@@ -3,8 +3,8 @@ local opt = vim.opt
 vim.cmd('let $NVIM_TUI_ENABLE_TRUE_COLOR=1')
 opt.background = 'dark'
 opt.termguicolors = true
--- vim.cmd('colorscheme nightfox')
-vim.cmd('colorscheme nordic')
+-- vim.cmd('colorscheme nordic')
+-- vim.cmd('colorscheme onenord')
 -- Basic Configurations
 opt.tabstop = 2
 opt.softtabstop = 2
@@ -66,6 +66,7 @@ augroup configgroup
   autocmd BufNewFile,BufRead Fastfile set filetype=ruby
   autocmd BufNewFile,BufRead Dangerfile set filetype=ruby
   autocmd BufNewFile,BufRead Appfile set filetype=ruby
+  autocmd BufNewFile,BufRead Podfile set filetype=ruby
   autocmd FileType typescript,typescript.tsx setlocal indentkeys+=0
 augroup END
 ]], true)
