@@ -43,10 +43,6 @@ require "paq" {
   'dcampos/cmp-snippy';
   {'michaelb/sniprun', build = 'bash install.sh'};
 
-  -- Plugins for AI
-  'Bryley/neoai.nvim';
-  'MunifTanjim/nui.nvim';
-
   -- Plugins for JavaScript
   'pangloss/vim-javascript';
   'mustache/vim-mustache-handlebars';
@@ -174,6 +170,7 @@ local on_attach = function(client, bufnr) ---@diagnostic disable-line
   buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 end
 
 local lsp_installer = require('nvim-lsp-installer')
@@ -184,7 +181,7 @@ lspconfig.clangd.setup{
   capabilities = capabilities,
   on_attach = on_attach
 }
-lspconfig.tsserver.setup{
+lspconfig.ts_ls.setup{
   capabilities = capabilities,
   on_attach = on_attach
 }
