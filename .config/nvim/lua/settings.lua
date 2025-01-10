@@ -64,7 +64,7 @@ augroup configgroup
   autocmd BufEnter *.sh setlocal shiftwidth=2
   autocmd BufEnter *.sh setlocal softtabstop=2
   autocmd BufNewFile,BufRead Fastfile set filetype=ruby
-  autocmd BufNewFile,BufRead Dangerfile set filetype=ruby
+  autocmd BufNewFile,BufRead Dangerfile.*,Dangerfile set filetype=ruby
   autocmd BufNewFile,BufRead Appfile set filetype=ruby
   autocmd BufNewFile,BufRead Podfile set filetype=ruby
   autocmd FileType typescript,typescript.tsx setlocal indentkeys+=0
