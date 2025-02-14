@@ -112,6 +112,7 @@ bindkey '^Z' fancy-ctrl-z
 
 source $HOME/.env-local
 . $HOME/.asdf/asdf.sh
+. ~/.asdf/plugins/java/set-java-home.zsh
 
 
 # Android
