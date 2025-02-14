@@ -74,6 +74,13 @@ require "paq" {
   -- 'rmehri01/onenord.nvim';
   -- 'AlexvZyl/nordic.nvim';
   {'rmehri01/onenord.nvim', branch = 'main'};
+
+  -- AI Coding
+  -- dependencies for avante.nvim
+  'stevearc/dressing.nvim';
+  'MunifTanjim/nui.nvim';
+  'MeanderingProgrammer/render-markdown.nvim';
+  {'yetone/avante.nvim', branch = 'main', build = 'make'};
 }
 
 local opt = vim.opt
@@ -244,3 +251,13 @@ require('lualine').setup {
 
 require('onenord').setup()
 
+require('avante_lib').load()
+require('avante').setup({
+  provider = 'gemini',
+  auto_suggestions_provider = "gemini",
+  gemini = {
+    endpoint = "https://generativelanguage.googleapis.com/v1beta/models",
+    model = "gemini-2.0-flash",
+    temperature = 0.1,
+  }
+})

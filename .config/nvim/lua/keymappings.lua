@@ -14,6 +14,9 @@ utils.map('n', '<leader>g', ':Neogit<CR>')
 
 utils.map('n', '<leader>h', ':TSHighlightCapturesUnderCursor<CR>')
 
+utils.map('n', '<leader>aa', ':AvanteToggle<CR>')
+utils.map('n', '<leader>ar', ':AvanteRefresh<CR>')
+utils.map('n', '<leader>af', ':AvanteFocus<CR>')
 -- vmap <C-c><C-c> <Plug>SendSelectionToTmux
 -- nmap <C-c><C-c> <Plug>NormalModeSendToTmux
 -- nmap <C-c>r     <Plug>SetTmuxVars

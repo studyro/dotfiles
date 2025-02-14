@@ -1,4 +1,4 @@
-export PATH="/usr/local/homebrew/bin:/usr/local/sbin:$PATH:$HOME/.depot_tools:$HOME/.asdf/installs/rust/1.62.1/env"
+export PATH="/usr/local/homebrew/bin:/usr/local/sbin:$PATH:$HOME/.depot_tools:$HOME/.asdf/installs/rust/1.62.1/env:/opt/homebrew/bin:/opt/homebrew/coreutils/libexec/gnubin"
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -79,15 +79,6 @@ source $ZSH/oh-my-zsh.sh
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-# Android
-# export JAVA_HOME=$(/usr/libexec/java_home)
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-14.0.2.jdk/Contents/Home
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export ANDROID_SDK=$HOME/Library/Android/sdk
-export ANDROID_NDK=$HOME/Library/Android/android-ndk-r20
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-
 # ZSH / BASH users
 # # Add this to your .env, .bashrc, .zshrc, or whatever file you're using for environment
 
@@ -119,28 +110,43 @@ fancy-ctrl-z () {
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
+source $HOME/.env-local
 . $HOME/.asdf/asdf.sh
 
 
+# Android
+# export JAVA_HOME=$(/usr/libexec/java_home)
+# export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-14.0.2.jdk/Contents/Home
+export JAVA_HOME=$(asdf where java)
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export ANDROID_SDK=$HOME/Library/Android/sdk
+export ANDROID_NDK=$HOME/Library/Android/android-ndk-r23
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/peterzhang/.miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/Users/peter.zhang/.miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/Users/peterzhang/.miniforge3/etc/profile.d/conda.sh" ]; then
-        . "/Users/peterzhang/.miniforge3/etc/profile.d/conda.sh"
+    if [ -f "/Users/peter.zhang/.miniforge3/etc/profile.d/conda.sh" ]; then
+        . "/Users/peter.zhang/.miniforge3/etc/profile.d/conda.sh"
     else
-        export PATH="/Users/peterzhang/.miniforge3/bin:$PATH"
+        export PATH="/Users/peter.zhang/.miniforge3/bin:$PATH"
     fi
 fi
 unset __conda_setup
 
-if [ -f "/Users/peterzhang/.miniforge3/etc/profile.d/mamba.sh" ]; then
-    . "/Users/peterzhang/.miniforge3/etc/profile.d/mamba.sh"
+if [ -f "/Users/peter.zhang/.miniforge3/etc/profile.d/mamba.sh" ]; then
+    . "/Users/peter.zhang/.miniforge3/etc/profile.d/mamba.sh"
 fi
 # <<< conda initialize <<<
 
 
 # Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/peterzhang/.cache/lm-studio/bin"
+export PATH="$PATH:$HOME/.cache/lm-studio/bin"
+
+# Setting PATH for Pandora
+export DJIPANDORA_BIN="/Users/peter.zhang/.djipandora/bin"
+export PATH="${PATH}:${DJIPANDORA_BIN}"
