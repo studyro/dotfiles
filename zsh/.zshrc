@@ -151,3 +151,6 @@ export PATH="$PATH:$HOME/.cache/lm-studio/bin"
 # Setting PATH for Pandora
 export DJIPANDORA_BIN="/Users/peter.zhang/.djipandora/bin"
 export PATH="${PATH}:${DJIPANDORA_BIN}"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:$HOME/.lmstudio/bin"
