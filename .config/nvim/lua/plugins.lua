@@ -33,6 +33,7 @@ require "paq" {
   'nvim-tree/nvim-tree.lua';
 
   -- Plugins for autocomplete on nvim 0.5+
+  'lbrayner/vim-rzip';
   'neovim/nvim-lspconfig';
   'williamboman/nvim-lsp-installer';
   -- 'tamago324/nlsp-settings.nvim';
