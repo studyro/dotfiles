@@ -260,7 +260,7 @@ require('avante').setup({
   auto_suggestions_provider = "gemini",
   gemini = {
     endpoint = "https://generativelanguage.googleapis.com/v1beta/models",
-    model = "gemini-2.0-flash",
+    model = "gemini-2.5-flash-preview-04-17",
     temperature = 0.1,
   }
 })
