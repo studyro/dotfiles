@@ -6,6 +6,10 @@ opt.termguicolors = true
 -- vim.cmd('colorscheme nordic')
 -- vim.cmd('colorscheme onenord')
 -- Basic Configurations
+-- Enable per-project configs
+vim.o.exrc = true
+-- Restrict configs to trusted files only
+vim.o.secure = true
 opt.tabstop = 2
 opt.softtabstop = 2
 opt.shiftwidth = 2

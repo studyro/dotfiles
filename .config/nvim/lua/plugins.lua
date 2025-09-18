@@ -75,6 +75,7 @@ require "paq" {
   -- 'rmehri01/onenord.nvim';
   -- 'AlexvZyl/nordic.nvim';
   {'rmehri01/onenord.nvim', branch = 'main'};
+  'sphamba/smear-cursor.nvim';
 
   -- AI Coding
   -- dependencies for avante.nvim
@@ -258,9 +259,15 @@ require('avante_lib').load()
 require('avante').setup({
   provider = 'gemini',
   auto_suggestions_provider = "gemini",
-  gemini = {
-    endpoint = "https://generativelanguage.googleapis.com/v1beta/models",
-    model = "gemini-2.5-flash-preview-04-17",
-    temperature = 0.1,
+  providers = {
+    gemini = {
+      endpoint = "https://generativelanguage.googleapis.com/v1beta/models",
+      model = "gemini-2.5-flash",
+      temperature = 0.1,
+      max_tokens = 150000,
+      timeout = 60000
+    }
   }
 })
+
+require('smear_cursor').setup {}

@@ -113,7 +113,7 @@ bindkey '^Z' fancy-ctrl-z
 source $HOME/.env-local
 . $HOME/.asdf/asdf.sh
 . ~/.asdf/plugins/java/set-java-home.zsh
-
+export PATH="$PATH:$HOME/.local/bin"
 
 # Android
 # export JAVA_HOME=$(/usr/libexec/java_home)
@@ -121,7 +121,6 @@ source $HOME/.env-local
 export JAVA_HOME=$(asdf where java)
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export ANDROID_SDK=$HOME/Library/Android/sdk
-export ANDROID_NDK=$HOME/Library/Android/android-ndk-r23
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
@@ -154,3 +153,5 @@ export PATH="${PATH}:${DJIPANDORA_BIN}"
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:$HOME/.lmstudio/bin"
+
+. "$HOME/.local/bin/env"
