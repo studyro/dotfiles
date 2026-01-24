@@ -4,7 +4,6 @@ vim.g.loaded_netrwPlugin = 1
 require "paq" {
   "savq/paq-nvim";
   -- General plugins
-  -- 'dstein64/vim-startuptime';
   'rking/ag.vim';
   {'jgdavey/tslime.vim', branch = 'main'};
   'tpope/vim-fugitive';
@@ -12,7 +11,6 @@ require "paq" {
   'tpope/vim-surround';
   'benekastah/neomake';
   'terryma/vim-multiple-cursors';
-  'tpope/vim-commentary';
   'tpope/vim-repeat';
   'tpope/vim-unimpaired';
 
@@ -35,7 +33,7 @@ require "paq" {
   -- Plugins for autocomplete on nvim 0.5+
   'lbrayner/vim-rzip';
   'neovim/nvim-lspconfig';
-  'williamboman/nvim-lsp-installer';
+  'mason-org/mason.nvim';
   -- 'tamago324/nlsp-settings.nvim';
   'hrsh7th/nvim-cmp';
   'hrsh7th/cmp-nvim-lsp';
@@ -59,12 +57,6 @@ require "paq" {
 
   -- Plugins for elixir
   'elixir-editors/vim-elixir';
-
-  -- Plugins for elm
-  'lambdatoast/elm.vim';
-
-  -- Plugin for clang-based languages
-  'keith/swift.vim';
 
   'kelan/gyp.vim';
   'jparise/vim-graphql';
@@ -184,19 +176,19 @@ local on_attach = function(client, bufnr) ---@diagnostic disable-line
   buf_set_keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float(0, {scope="line"})<CR>', opts)
 end
 
-local lsp_installer = require('nvim-lsp-installer')
-lsp_installer.setup{}
+require("mason").setup()
 
-local lspconfig = require('lspconfig')
-lspconfig.clangd.setup{
+vim.lsp.config('clangd', {
   capabilities = capabilities,
   on_attach = on_attach
-}
-lspconfig.ts_ls.setup{
+})
+vim.lsp.config('ts_ls', {
   capabilities = capabilities,
   on_attach = on_attach
-}
-lspconfig.eslint.setup{}
+})
+vim.lsp.enable('clangd')
+vim.lsp.enable('ts_ls')
+vim.lsp.enable('eslint')
 
 local snippy = require('snippy')
 local cmp = require('cmp')
