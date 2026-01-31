@@ -20,6 +20,7 @@ require "paq" {
   'nvim-lua/plenary.nvim';
   'nvim-telescope/telescope.nvim';
   {'nvim-telescope/telescope-fzf-native.nvim', build = 'make'};
+  'ibhagwan/fzf-lua';
   'TimUntersberger/neogit';
   'sindrets/diffview.nvim';
   'folke/twilight.nvim';
@@ -27,7 +28,7 @@ require "paq" {
   'windwp/nvim-autopairs';
   'aserowy/tmux.nvim';
   'nvim-lualine/lualine.nvim';
-  -- 'nvim-tree/nvim-web-devicons';
+  'nvim-tree/nvim-web-devicons';
   'nvim-tree/nvim-tree.lua';
 
   -- Plugins for autocomplete on nvim 0.5+
@@ -133,28 +134,29 @@ require('nvim-treesitter.configs').setup {
   },
 }
 local actions = require('telescope.actions')
-require('telescope').setup {
-  defaults = {
-    layout_config = {
-      width = 0.7,
-    },
-    mappings = {
-      i = {
-        ["<esc>"] = actions.close
-      },
-    },
-    file_sorter =  require'telescope.sorters'.get_fzy_sorter,
-  },
-  extensions = {
-    fzf = {
-      fuzzy = true,                    -- false will only do exact matching
-      override_generic_sorter = true,  -- override the generic sorter
-      override_file_sorter = true,     -- override the file sorter
-      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
-    },
-  },
-}
-require('telescope').load_extension('fzf')
+-- require('telescope').setup {
+--   defaults = {
+--     layout_config = {
+--       width = 0.7,
+--     },
+--     mappings = {
+--       i = {
+--         ["<esc>"] = actions.close
+--       },
+--     },
+--     file_sorter =  require'telescope.sorters'.get_fzy_sorter,
+--   },
+--   extensions = {
+--     fzf = {
+--       fuzzy = true,                    -- false will only do exact matching
+--       override_generic_sorter = true,  -- override the generic sorter
+--       override_file_sorter = true,     -- override the file sorter
+--       case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+--     },
+--   },
+-- }
+-- require('telescope').load_extension('fzf')
+require('fzf-lua')
 require('twilight').setup {}
 require('zen-mode').setup {}
 require('nvim-autopairs').setup {}
@@ -176,6 +178,7 @@ local on_attach = function(client, bufnr) ---@diagnostic disable-line
   buf_set_keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float(0, {scope="line"})<CR>', opts)
 end
 
+require('render-markdown').setup({})
 require("mason").setup()
 
 vim.lsp.config('clangd', {
