@@ -16,7 +16,6 @@ require "paq" {
 
   -- Plugins for nvim 0.5
   {'nvim-treesitter/nvim-treesitter', build = function() vim.api.nvim_command(':TSUpdate') end};
-  'nvim-treesitter/playground';
   'nvim-lua/plenary.nvim';
   'nvim-telescope/telescope.nvim';
   {'nvim-telescope/telescope-fzf-native.nvim', build = 'make'};
@@ -30,6 +29,7 @@ require "paq" {
   'nvim-lualine/lualine.nvim';
   'nvim-tree/nvim-web-devicons';
   'nvim-tree/nvim-tree.lua';
+  'esmuellert/codediff.nvim';
 
   -- Plugins for autocomplete on nvim 0.5+
   'lbrayner/vim-rzip';
@@ -117,22 +117,45 @@ require("nvim-tree").setup {
   },
 }
 
-require('nvim-treesitter.configs').setup {
-  ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  -- ignore_install = { "javascript" }, -- List of parsers to ignore installing
-  highlight = {
-    enable = true,
-    disable = { "css" },
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
-  },
-  indent = {
-    enable = true,
-  },
-}
+-- require('nvim-treesitter.config').setup {
+--   ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+--   -- ignore_install = { "javascript" }, -- List of parsers to ignore installing
+--   highlight = {
+--     enable = true,
+--     disable = { "css" },
+--     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+--     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+--     -- Using this option may slow down your editor, and you may see some duplicate highlights.
+--     -- Instead of true it can also be a list of languages
+--     additional_vim_regex_highlighting = false,
+--   },
+--   indent = {
+--     enable = true,
+--   },
+-- }
+-- require('nvim-treesitter').install { 'stable', 'unstable' }
+local function start_treesitter(buf, lang)
+  local ok = pcall(vim.treesitter.start, buf, lang)
+  if ok then
+    vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+  end
+  return ok
+end
+
+local group = vim.api.nvim_create_augroup('TreesitterSetup', { clear = true })
+vim.api.nvim_create_autocmd('FileType', {
+  group = group,
+  desc = 'Enable treesitter highlighting and indentation (non-blocking)',
+  callback = function(event)
+    local lang = vim.treesitter.language.get_lang(event.match) or event.match
+    local buf = event.buf
+    start_treesitter(buf, lang)
+  end,
+})
+vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.wo[0][0].foldmethod = 'expr'
+vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+
 local actions = require('telescope.actions')
 -- require('telescope').setup {
 --   defaults = {
