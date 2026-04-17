@@ -97,19 +97,6 @@ man() {
 		man "$@"
 }
 
-# ctrl-z to switch between command-line and vim.
-fancy-ctrl-z () {
-        if [[ $#BUFFER -eq 0 ]]; then
-                BUFFER="fg"
-                zle accept-line
-        else
-                zle push-input
-                zle clear-screen
-        fi
-}
-zle -N fancy-ctrl-z
-bindkey '^Z' fancy-ctrl-z
-
 source $HOME/.env-local
 . $HOME/.asdf/asdf.sh
 . ~/.asdf/plugins/java/set-java-home.zsh
@@ -154,4 +141,4 @@ export PATH="${PATH}:${DJIPANDORA_BIN}"
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:$HOME/.lmstudio/bin"
 
-. "$HOME/.local/bin/env"
+# . "$HOME/.local/bin/env"

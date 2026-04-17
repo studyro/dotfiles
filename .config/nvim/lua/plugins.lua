@@ -1,3 +1,5 @@
+local utils = require('utils')
+
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
@@ -6,11 +8,9 @@ require "paq" {
   -- General plugins
   'rking/ag.vim';
   {'jgdavey/tslime.vim', branch = 'main'};
-  'tpope/vim-fugitive';
   'majutsushi/tagbar'; -- nmap <leader>t :TagbarToggle<CR>
   'tpope/vim-surround';
   'benekastah/neomake';
-  'terryma/vim-multiple-cursors';
   'tpope/vim-repeat';
   'tpope/vim-unimpaired';
 
@@ -21,15 +21,15 @@ require "paq" {
   {'nvim-telescope/telescope-fzf-native.nvim', build = 'make'};
   'ibhagwan/fzf-lua';
   'TimUntersberger/neogit';
-  'sindrets/diffview.nvim';
   'folke/twilight.nvim';
-  'folke/zen-mode.nvim';
   'windwp/nvim-autopairs';
   'aserowy/tmux.nvim';
+  'swaits/zellij-nav.nvim';
   'nvim-lualine/lualine.nvim';
   'nvim-tree/nvim-web-devicons';
   'nvim-tree/nvim-tree.lua';
   'esmuellert/codediff.nvim';
+  'lewis6991/gitsigns.nvim';
 
   -- Plugins for autocomplete on nvim 0.5+
   'lbrayner/vim-rzip';
@@ -43,24 +43,11 @@ require "paq" {
   'dcampos/cmp-snippy';
   {'michaelb/sniprun', build = 'bash install.sh'};
 
-  -- Plugins for JavaScript
-  'pangloss/vim-javascript';
-  'mustache/vim-mustache-handlebars';
-
-  -- Plugins for Ruby
-  'skalnik/vim-vroom';
-  'tpope/vim-endwise';
-  'tpope/vim-bundler';
-  'tpope/vim-rails';
-
-  -- Plugins for Go
-  'fatih/vim-go';
-
-  -- Plugins for elixir
-  'elixir-editors/vim-elixir';
-
   'kelan/gyp.vim';
   'jparise/vim-graphql';
+
+  -- Plugins for Android
+  'iamironz/android-nvim-plugin';
 
   -- Themes
   -- 'ajh17/Spacegray.vim';
@@ -71,11 +58,8 @@ require "paq" {
   'sphamba/smear-cursor.nvim';
 
   -- AI Coding
-  -- dependencies for avante.nvim
-  'stevearc/dressing.nvim';
   'MunifTanjim/nui.nvim';
   'MeanderingProgrammer/render-markdown.nvim';
-  {'yetone/avante.nvim', branch = 'main', build = 'make'};
 }
 
 local opt = vim.opt
@@ -117,23 +101,6 @@ require("nvim-tree").setup {
   },
 }
 
--- require('nvim-treesitter.config').setup {
---   ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
---   -- ignore_install = { "javascript" }, -- List of parsers to ignore installing
---   highlight = {
---     enable = true,
---     disable = { "css" },
---     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
---     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
---     -- Using this option may slow down your editor, and you may see some duplicate highlights.
---     -- Instead of true it can also be a list of languages
---     additional_vim_regex_highlighting = false,
---   },
---   indent = {
---     enable = true,
---   },
--- }
--- require('nvim-treesitter').install { 'stable', 'unstable' }
 local function start_treesitter(buf, lang)
   local ok = pcall(vim.treesitter.start, buf, lang)
   if ok then
@@ -157,113 +124,35 @@ vim.wo[0][0].foldmethod = 'expr'
 vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 
 local actions = require('telescope.actions')
--- require('telescope').setup {
---   defaults = {
---     layout_config = {
---       width = 0.7,
---     },
---     mappings = {
---       i = {
---         ["<esc>"] = actions.close
---       },
---     },
---     file_sorter =  require'telescope.sorters'.get_fzy_sorter,
---   },
---   extensions = {
---     fzf = {
---       fuzzy = true,                    -- false will only do exact matching
---       override_generic_sorter = true,  -- override the generic sorter
---       override_file_sorter = true,     -- override the file sorter
---       case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
---     },
---   },
--- }
--- require('telescope').load_extension('fzf')
 require('fzf-lua')
 require('twilight').setup {}
-require('zen-mode').setup {}
 require('nvim-autopairs').setup {}
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-local on_attach = function(client, bufnr) ---@diagnostic disable-line
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  -- local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
-  local opts = { noremap=true, silent=true }
-
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float(0, {scope="line"})<CR>', opts)
-  buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float(0, {scope="line"})<CR>', opts)
-end
-
 require('render-markdown').setup({})
-require("mason").setup()
+require('lsp').setup()
 
-vim.lsp.config('clangd', {
-  capabilities = capabilities,
-  on_attach = on_attach
-})
-vim.lsp.config('ts_ls', {
-  capabilities = capabilities,
-  on_attach = on_attach
-})
-vim.lsp.enable('clangd')
-vim.lsp.enable('ts_ls')
-vim.lsp.enable('eslint')
-
-local snippy = require('snippy')
-local cmp = require('cmp')
-cmp.setup {
-  snippet = {
-    expand = function(args)
-      snippy.expand_snippet(args.body)
-    end,
-  },
-  mapping = cmp.mapping.preset.insert({
-    ['<Tab>'] = function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif snippy.can_expand_or_advance() then
-        snippy.expand_or_advance()
-      else
-        fallback()
-      end
-    end,
-    ['<S-Tab>'] = function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif snippy.can_jump(-1) then
-        snippy.previous()
-      else
-        fallback()
-      end
-    end,
-    ['<CR>'] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true
-    },
-  }),
-  sources = {
-    { name = 'nvim_lsp' },
-    { name = 'snippy' },
-    { name = 'buffer' },
-  },
-}
-
-require('tmux').setup {
-  copy_sync = {
-    enabled = true
-  },
-  navigation = {
-    -- enables default keybindings (C-hjkl) for normal mode
-    enable_default_keybindings = true,
-  }
-}
+-- require('tmux').setup {
+--   copy_sync = {
+--     enabled = true
+--   },
+--   navigation = {
+--     -- enables default keybindings (C-hjkl) for normal mode
+--     enable_default_keybindings = true,
+--   }
+-- }
+if vim.env.ZELLIJ ~= nil then
+  require('zellij-nav').setup({})
+  -- NOTE: Ensures that when exiting NeoVim, Zellij returns to normal mode
+  -- vim.api.nvim_create_autocmd("VimLeave", {
+  --   pattern = "*",
+  --   command = "silent !zellij action switch-mode normal"
+  -- })
+  vim.fn.system({ "zellij", "action", "switch-mode", "locked" })
+  utils.map('n', '<c-h>', ':ZellijNavigateLeft<CR>')
+  utils.map('n', '<c-l>', ':ZellijNavigateRight<CR>')
+  utils.map('n', '<c-j>', ':ZellijNavigateDown<CR>')
+  utils.map('n', '<c-k>', ':ZellijNavigateUp<CR>')
+end
 
 require('lualine').setup {
   options = {
@@ -273,19 +162,5 @@ require('lualine').setup {
 
 require('onenord').setup()
 
-require('avante_lib').load()
-require('avante').setup({
-  provider = 'gemini',
-  auto_suggestions_provider = "gemini",
-  providers = {
-    gemini = {
-      endpoint = "https://generativelanguage.googleapis.com/v1beta/models",
-      model = "gemini-2.5-flash",
-      temperature = 0.1,
-      max_tokens = 150000,
-      timeout = 60000
-    }
-  }
-})
-
 require('smear_cursor').setup {}
+require("android").setup()
