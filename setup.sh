@@ -17,3 +17,5 @@ ln -s $DOT_FILES_DIR/.config/nvim $DOT_CONFIG_DIR/.config/nvim
 
 ln -s $DOT_FILES_DIR/xvim/.xvimrc $DOT_CONFIG_DIR/.xvimrc
 ln -s $DOT_FILES_DIR/idea/.ideavimrc $DOT_CONFIG_DIR/.ideavimrc
+
+ln -s $DOT_FILES_DIR/zellij/config.kdl $DOT_CONFIG_DIR/.config/zellij/config.kdl

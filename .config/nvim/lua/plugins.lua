@@ -23,7 +23,6 @@ require "paq" {
   'TimUntersberger/neogit';
   'folke/twilight.nvim';
   'windwp/nvim-autopairs';
-  'aserowy/tmux.nvim';
   'swaits/zellij-nav.nvim';
   'nvim-lualine/lualine.nvim';
   'nvim-tree/nvim-web-devicons';
@@ -131,23 +130,14 @@ require('nvim-autopairs').setup {}
 require('render-markdown').setup({})
 require('lsp').setup()
 
--- require('tmux').setup {
---   copy_sync = {
---     enabled = true
---   },
---   navigation = {
---     -- enables default keybindings (C-hjkl) for normal mode
---     enable_default_keybindings = true,
---   }
--- }
-if vim.env.ZELLIJ ~= nil then
+if os.getenv("ZELLIJ") ~= nil then
   require('zellij-nav').setup({})
-  -- NOTE: Ensures that when exiting NeoVim, Zellij returns to normal mode
-  -- vim.api.nvim_create_autocmd("VimLeave", {
-  --   pattern = "*",
-  --   command = "silent !zellij action switch-mode normal"
-  -- })
-  vim.fn.system({ "zellij", "action", "switch-mode", "locked" })
+  -- Let zellij-autolock manage lock mode while NeoVim is focused, but switch
+  -- back immediately on exit so shell panes regain Zellij keybindings.
+  vim.api.nvim_create_autocmd("VimLeave", {
+    pattern = "*",
+    command = "silent !zellij action switch-mode normal"
+  })
   utils.map('n', '<c-h>', ':ZellijNavigateLeft<CR>')
   utils.map('n', '<c-l>', ':ZellijNavigateRight<CR>')
   utils.map('n', '<c-j>', ':ZellijNavigateDown<CR>')
